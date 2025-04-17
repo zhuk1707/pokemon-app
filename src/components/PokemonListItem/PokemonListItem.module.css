@@ -1,0 +1,57 @@
+.listItem {
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  background-color: #fafafa;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desc {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.index {
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: dimgray;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.8rem;
+  width: 2.8rem;
+}
+
+
+
+.button img {
+  width: 18px;
+  height: 18px;
+}
+
+.button:hover img{
+  filter: invert(57%) sepia(51%) saturate(3752%) hue-rotate(330deg) brightness(99%) contrast(105%);
+}
+
+.favorite img{
+  filter: invert(57%) sepia(51%) saturate(3752%) hue-rotate(330deg) brightness(99%) contrast(105%);
+}

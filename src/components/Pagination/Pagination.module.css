@@ -1,0 +1,15 @@
+.pagination {
+  margin: 2rem 0;
+  display: flex;
+  gap: .5rem;
+}
+
+.current {
+  border-color: tomato;
+}
+
+.disable {
+  border-color: dimgrey;
+  color: dimgray;
+
+}
