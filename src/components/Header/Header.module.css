@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  background-color: cornflowerblue;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+}

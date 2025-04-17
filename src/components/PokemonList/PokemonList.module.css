@@ -1,0 +1,10 @@
+.list {
+  margin-top: 2rem;
+  background-color: #ececec;
+  padding: 2rem;
+  border-radius: 4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
