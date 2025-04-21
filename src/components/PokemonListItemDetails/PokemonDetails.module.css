@@ -1,0 +1,48 @@
+.card {
+  margin-top: 2rem;
+  background-color: #ececec;
+  padding: 2rem;
+  border-radius: 4rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.h2 {
+  opacity: .7;
+}
+
+.image_n_controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.image {
+  padding: 1rem;
+  background: white;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.image img {
+  object-fit: cover;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.controls button {
+  width: 100%;
+}
+
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
