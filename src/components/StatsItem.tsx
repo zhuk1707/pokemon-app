@@ -1,12 +1,12 @@
 import classes from './StatsItem.module.css'
 import React from 'react'
 
-type StatItem = {
+interface StatItemProps {
   statLabel: string;
   value: number;
-};
+}
 
-export const StatsItem: React.FC<StatItem> = (
+export const StatsItem: React.FC<StatItemProps> = (
   {
     statLabel,
     value
