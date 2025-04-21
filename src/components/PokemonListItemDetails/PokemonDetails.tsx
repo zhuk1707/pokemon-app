@@ -1,7 +1,7 @@
 import classes from './PokemonDetails.module.css'
 import React from 'react'
 import { Button } from '../button/Button.tsx'
-import { StatsItem } from '../StatsItem.tsx'
+import { StatsItem } from '../StatsItem/StatsItem.tsx'
 
 type StatItem = {
   statLabel: string;
@@ -33,11 +33,11 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
         <div className={classes.controls}>
           <Button
             title={'Favorite'}
-            icon={<img src="src/assets/heart.svg" alt="" />}
+            icon={<img src="/src/assets/heart.svg" alt="" />}
           />
           <Button
             title={'Compare'}
-            icon={<img src="src/assets/scales.svg" alt="" />}
+            icon={<img src="/src/assets/scales.svg" alt="" />}
           />
         </div>
       </div>

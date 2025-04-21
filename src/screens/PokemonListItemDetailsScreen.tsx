@@ -36,7 +36,7 @@ export const PokemonListItemDetailsScreen = () => {
   return (
     <>
       <PokemonDetails
-        imageURL={'./src/assets/pikachu.png'}
+        imageURL={'/src/assets/pikachu.png'}
         name={'Pikachu'}
         height={0.4}
         weight={6}
