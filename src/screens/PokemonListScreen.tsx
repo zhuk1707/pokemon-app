@@ -6,7 +6,7 @@ import { Pagination } from '../components/Pagination/Pagination.tsx'
 export const PokemonListScreen = () => {
   return (
     <>
-      <Header />
+      <Header subtitle={'List'}/>
       <PokemonList />
       <Pagination />
     </>

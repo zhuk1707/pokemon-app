@@ -1,4 +1,5 @@
 import { PokemonDetails } from '../components/PokemonListItemDetails/PokemonDetails.tsx'
+import { Header } from '../components/Header/Header.tsx'
 
 type StatItem = {
   statLabel: string;
@@ -35,6 +36,7 @@ const mockStats: StatItem[] = [
 export const PokemonListItemDetailsScreen = () => {
   return (
     <>
+      <Header subtitle={'Details'}/>
       <PokemonDetails
         imageURL={'/src/assets/pikachu.png'}
         name={'Pikachu'}

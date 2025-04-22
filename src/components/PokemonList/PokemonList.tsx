@@ -75,17 +75,21 @@ const fakePokeApi: Pokemon[] = [
 
 export const PokemonList = () => {
   return (
-    <div className={classes.list}>
-      {fakePokeApi
-        .map((pokemon) => (
-          <PokemonListItem
-            key={pokemon.periodicNumber}
-            pokemonName={pokemon.pokemonName}
-            periodicNumber={pokemon.periodicNumber}
-            isFavorite={pokemon.isFavorite}
-            isInComparison={pokemon.isInComparison}
-          />
-        ))}
+    <div className={classes.listOuter}>
+      <div className="container">
+        <div className={classes.list}>
+          {fakePokeApi
+            .map((pokemon) => (
+              <PokemonListItem
+                key={pokemon.periodicNumber}
+                pokemonName={pokemon.pokemonName}
+                periodicNumber={pokemon.periodicNumber}
+                isFavorite={pokemon.isFavorite}
+                isInComparison={pokemon.isInComparison}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   )
 }
