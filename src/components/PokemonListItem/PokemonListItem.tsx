@@ -1,5 +1,6 @@
 import classes from './PokemonListItem.module.css'
 import React from 'react'
+import { Button } from '../button/Button.tsx'
 
 type PokemonListItemProps = {
   pokemonName: string;
@@ -28,20 +29,14 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
       </div>
 
       <div className={classes.buttons}>
-        <button className={
-          !isFavorite
-            ? classes.button
-            : `${classes.button} ${classes.favorite}`
-        }>
-          <img src="src/assets/heart.svg" alt="" />
-        </button>
-        <button className={
-          !isInComparison
-            ? classes.button
-            : `${classes.button} ${classes.favorite}`
-        }>
-          <img src="src/assets/scales.svg" alt="" />
-        </button>
+        <Button
+          icon={<img src="src/assets/heart.svg" alt="" />}
+          active={isFavorite}
+        />
+        <Button
+          icon={<img src="src/assets/scales.svg" alt="" />}
+          active={isInComparison}
+        />
       </div>
     </div>
   )

@@ -1,0 +1,12 @@
+.stats__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem;
+  background: white;
+  border-radius: .5rem;
+}
+
+.stats__labels {
+  opacity: .7;
+}

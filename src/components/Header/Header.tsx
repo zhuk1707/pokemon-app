@@ -11,8 +11,8 @@ export const Header = () => {
       </div>
 
       <div className={classes.buttons}>
-        <Button>Favorites</Button>
-        <Button>Comparison</Button>
+        <Button title={'Favorites'} icon={<img src="./src/assets/heart.svg" alt="" />} />
+        <Button title={'Comparison'} icon={<img src="src/assets/scales.svg" alt="" />}/>
       </div>
     </header>
   )

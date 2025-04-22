@@ -33,25 +33,3 @@
   color: dimgray;
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.8rem;
-  width: 2.8rem;
-}
-
-
-
-.button img {
-  width: 18px;
-  height: 18px;
-}
-
-.button:hover img{
-  filter: invert(57%) sepia(51%) saturate(3752%) hue-rotate(330deg) brightness(99%) contrast(105%);
-}
-
-.favorite img{
-  filter: invert(57%) sepia(51%) saturate(3752%) hue-rotate(330deg) brightness(99%) contrast(105%);
-}
