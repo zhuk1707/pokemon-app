@@ -12,7 +12,7 @@
   background-color: #ececec;
 }
 
-h1 {
+.headerLogo {
   font-weight: 800;
   display: flex;
   gap: .4rem;

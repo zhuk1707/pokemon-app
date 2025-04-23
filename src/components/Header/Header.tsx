@@ -7,12 +7,11 @@ export const Header = ({ subtitle }: { subtitle?: string }) => {
       <div className="container">
 
         <div className={classes.header}>
-          <div className="logo">
-            <h1>
-              <span>Pokémon</span>
-              <span className={classes.subtitle}>{subtitle && subtitle}</span>
-            </h1>
-          </div>
+          <h1 className={classes.headerLogo}>
+            <span>Pokémon</span>
+            <span className={classes.subtitle}>{subtitle && subtitle}</span>
+          </h1>
+
 
           <div className={classes.buttons}>
             <Button title={'Favorites'} icon={<img src="./src/assets/heart.svg" alt="" />} />

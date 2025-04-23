@@ -1,9 +1,7 @@
 import { Header } from '../components/Header/Header.tsx'
 import { PokemonList } from '../components/PokemonList/PokemonList.tsx'
-import { Pagination } from '../components/Pagination/Pagination.tsx'
 
-
-export const PokemonListScreen = () => {
+export const FavoritePokemonScreen = () => {
   interface Pokemon {
     pokemonName: string;
     periodicNumber: number;
@@ -76,10 +74,9 @@ export const PokemonListScreen = () => {
   ]
 
   return (
-    <>
-      <Header subtitle={'List'}/>
-      <PokemonList list={fakePokeApi}/>
-      <Pagination />
+    < >
+      <Header subtitle={'Favorites'} />
+      <PokemonList list={fakePokeApi} variant={'favorite'}/>
     </>
   )
 }
