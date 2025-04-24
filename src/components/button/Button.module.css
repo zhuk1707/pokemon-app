@@ -12,18 +12,24 @@
   transition: all .3s ease;
 }
 
-.button__icon {
+.button_round{
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 1.4rem;
+}
+
+.buttonIcon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.button__icon img {
+.buttonIcon img {
   width: 1.2rem;
   height: 1.2rem;
 }
 
-.button:hover img,.button_active:hover .button__icon img {
+.button:hover img,.button_active:hover .buttonIcon img {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
 }
 
@@ -55,7 +61,6 @@
   border-color: dimgray;
 }
 
-
-.button_active .button__icon img {
+.button_active .buttonIcon img {
   filter: invert(52%) sepia(52%) saturate(1592%) hue-rotate(327deg) brightness(97%) contrast(116%);
 }
