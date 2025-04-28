@@ -32,10 +32,12 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
         <Button
           icon={<img src="src/assets/heart.svg" alt="" />}
           active={isFavorite}
+          round
         />
         <Button
           icon={<img src="src/assets/scales.svg" alt="" />}
           active={isInComparison}
+          round
         />
       </div>
     </div>

@@ -8,84 +8,33 @@ interface Pokemon {
   isInComparison: boolean;
 }
 
-const fakePokeApi: Pokemon[] = [
-  {
-    pokemonName: 'Pikachu',
-    periodicNumber: 25,
-    isFavorite: true,
-    isInComparison: true
-  },
-  {
-    pokemonName: 'Raichu',
-    periodicNumber: 26,
-    isFavorite: false,
-    isInComparison: true
-  },
-  {
-    pokemonName: 'Charmander',
-    periodicNumber: 4,
-    isFavorite: false,
-    isInComparison: false
-  },
-  {
-    pokemonName: 'Bulbasaur',
-    periodicNumber: 1,
-    isFavorite: true,
-    isInComparison: false
-  },
-  {
-    pokemonName: 'Squirtle',
-    periodicNumber: 7,
-    isFavorite: false,
-    isInComparison: true
-  },
-  {
-
-    pokemonName: 'Jigglypuff',
-    periodicNumber: 39,
-    isFavorite: true,
-    isInComparison: true
-  },
-  {
-    pokemonName: 'Meowth',
-    periodicNumber: 52,
-    isFavorite: false,
-    isInComparison: false
-  },
-  {
-    pokemonName: 'Psyduck',
-    periodicNumber: 54,
-    isFavorite: true,
-    isInComparison: false
-  },
-  {
-    pokemonName: 'Snorlax',
-    periodicNumber: 143,
-    isFavorite: false,
-    isInComparison: true
-  },
-  {
-    pokemonName: 'Gengar',
-    periodicNumber: 94,
-    isFavorite: true,
-    isInComparison: false
-  }
-]
+interface PokemonListProps {
+  list: Pokemon[]
+  variant?: 'default' | 'favorite'
+}
 
 
-export const PokemonList = () => {
+export const PokemonList = ({ list, variant = 'default'}: PokemonListProps) => {
+  const filteredList = variant === 'favorite'
+    ? list .filter((item) => {return item.isFavorite && item})
+    : list
+
   return (
-    <div className={classes.list}>
-      {fakePokeApi
-        .map((pokemon) => (
-          <PokemonListItem
-            key={pokemon.periodicNumber}
-            pokemonName={pokemon.pokemonName}
-            periodicNumber={pokemon.periodicNumber}
-            isFavorite={pokemon.isFavorite}
-            isInComparison={pokemon.isInComparison}
-          />
-        ))}
+    <div className={classes.listOuter}>
+      <div className="container">
+        <div className={classes.list}>
+          {filteredList
+            .map((pokemon) => (
+              <PokemonListItem
+                key={pokemon.periodicNumber}
+                pokemonName={pokemon.pokemonName}
+                periodicNumber={pokemon.periodicNumber}
+                isFavorite={pokemon.isFavorite}
+                isInComparison={pokemon.isInComparison}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,14 +1,16 @@
+import { FavoritePokemonScreen } from './screens/FavoritePokemonScreen.tsx'
+import { ComparisonPokemonScreen } from './screens/ComparisonPokemonScreen.tsx'
 // import { PokemonListScreen } from './screens/PokemonListScreen.tsx'
-
-import { PokemonListItemDetailsScreen } from './screens/PokemonListItemDetailsScreen.tsx'
+// import { PokemonListItemDetailsScreen } from './screens/PokemonListItemDetailsScreen.tsx'
 
 export const App = () => {
-  return (
-    <div className="container">
-      {/*<PokemonListScreen/>*/}
+  return (<>
+      <FavoritePokemonScreen/>
+      <ComparisonPokemonScreen/>
 
-      <PokemonListItemDetailsScreen />
-    </div>
+      {/*<PokemonListScreen/>*/}
+      {/*<PokemonListItemDetailsScreen />*/}
+  </>
   )
 }
 
