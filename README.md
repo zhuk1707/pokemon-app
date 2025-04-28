@@ -35,12 +35,12 @@ You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-re
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+import reactX from 'eslint-plugin-react-ComparisonPokemonScreen'
 import reactDom from 'eslint-plugin-react-dom'
 
 export default tseslint.config({
   plugins: {
-    // Add the react-x and react-dom plugins
+    // Add the react-ComparisonPokemonScreen and react-dom plugins
     'react-x': reactX,
     'react-dom': reactDom,
   },

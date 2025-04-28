@@ -1,5 +1,5 @@
-import { PokemonDetails } from '../components/PokemonListItemDetails/PokemonDetails.tsx'
-import { Header } from '../components/Header/Header.tsx'
+import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
+import { Header } from '../../components/Header/Header.tsx'
 
 type StatItem = {
   statLabel: string;
