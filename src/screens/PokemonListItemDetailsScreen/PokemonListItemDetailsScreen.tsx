@@ -1,5 +1,8 @@
 import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
 import { Header } from '../../components/Header/Header.tsx'
+import { useParams } from 'react-router'
+import ImagePlaceholder from '../../assets/placeholder.png'
+import { fakePokeApi } from '../PokemonListScreen/PokemonListScreen.tsx'
 
 type StatItem = {
   statLabel: string;
@@ -34,16 +37,23 @@ const mockStats: StatItem[] = [
 ]
 
 export const PokemonListItemDetailsScreen = () => {
+  const { id } = useParams<{ id: string }>()
+
+  const currentPokemon = fakePokeApi
+    .find(item => item.periodicNumber.toString() === id);
+
   return (
     <>
       <Header subtitle={'Details'}/>
-      <PokemonDetails
-        imageURL={'/src/assets/pikachu.png'}
-        name={'Pikachu'}
-        height={0.4}
-        weight={6}
+      {currentPokemon && <PokemonDetails
+        imageURL={ImagePlaceholder}
+        name={currentPokemon.pokemonName}
+        periodicNumber={currentPokemon.periodicNumber}
+        height={currentPokemon.dimensions.height}
+        weight={currentPokemon.dimensions.weight}
         stats = {mockStats}
-      />
+      />}
+
     </>
   )
 }

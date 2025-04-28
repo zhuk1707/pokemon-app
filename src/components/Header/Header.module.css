@@ -18,6 +18,16 @@
   gap: .4rem;
 }
 
+.logoLink {
+  text-decoration: underline transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.logoLink:hover {
+  opacity: .8;
+}
+
 .subtitle {
   color: #4d4d4d;
   font-weight: 400;

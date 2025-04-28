@@ -2,7 +2,7 @@ details {
 }
 
 .card {
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: #ececec;
   padding: 2rem;
   border-radius: 4rem;
@@ -13,6 +13,13 @@ details {
 }
 
 .h2 {
+  opacity: .7;
+}
+
+.name {}
+
+.periodicNumber {
+  margin-left: 1rem;
   opacity: .7;
 }
 

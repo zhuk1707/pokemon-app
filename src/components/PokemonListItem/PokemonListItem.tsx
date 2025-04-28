@@ -1,6 +1,7 @@
 import classes from './PokemonListItem.module.css'
 import React from 'react'
 import { Button } from '../button/Button.tsx'
+import { useNavigate } from 'react-router'
 
 type PokemonListItemProps = {
   pokemonName: string;
@@ -14,14 +15,19 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     pokemonName,
     periodicNumber,
     isFavorite,
-    isInComparison
+    isInComparison,
   }) => {
+
+  const navigate = useNavigate()
+
+  const handlePokemonClick = (pokemonId: string) => {
+    navigate(`/details/${pokemonId}`);
+  };
+
   return (
     <div key={periodicNumber}
          className={classes.listItem}
-         onClick={() => {
-           console.log('Clicked on a list item')
-         }}
+         onClick={() => { handlePokemonClick(periodicNumber.toString())}}
     >
       <div className={classes.desc}>
         <div className={classes.name}>{pokemonName}</div>

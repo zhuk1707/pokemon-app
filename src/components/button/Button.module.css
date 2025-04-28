@@ -8,7 +8,7 @@
   color: black;
   border: 1px solid black;
   background-color: #fafafa;
-
+  font-weight: 600;
   transition: all .3s ease;
 }
 
@@ -46,13 +46,13 @@
 }
 
 .button_active{
-  border-color: tomato;
-  color: tomato;
+  border-color: var(--primary-red);
+  color: var(--primary-red);
 }
 
 .button_active:hover {
-  border-color: tomato;
-  background-color: tomato;
+  border-color: var(--primary-red);
+  background-color: var(--primary-red);
   color: white;
 }
 
@@ -62,5 +62,6 @@
 }
 
 .button_active .buttonIcon img {
-  filter: invert(52%) sepia(52%) saturate(1592%) hue-rotate(327deg) brightness(97%) contrast(116%);
+
+  filter: var(--filter-primary-red);
 }

@@ -31,5 +31,5 @@
 }
 
 .color_red {
-  color: tomato;
+  color: var(--primary-red);
 }
