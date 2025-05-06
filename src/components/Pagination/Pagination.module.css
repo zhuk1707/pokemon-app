@@ -8,7 +8,7 @@
 }
 
 .current {
-  border-color: tomato;
+  border-color: var(--primary-red);
 }
 
 .disable {

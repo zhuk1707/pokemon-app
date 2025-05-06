@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
 
+:root {
+  --primary-red: #ff2c11;
+  --filter-primary-red: invert(24%) sepia(32%) saturate(6795%) hue-rotate(353deg) brightness(103%) contrast(103%);
+}
+
 * {
   font-family: "Sora", sans-serif;
 }
@@ -17,3 +22,4 @@ button {
   max-width: 1200px;
   margin: 0 auto;
 }
+

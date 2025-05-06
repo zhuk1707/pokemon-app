@@ -11,6 +11,7 @@ type StatItem = {
 interface PokemonDetailsProps {
   imageURL: string,
   name: string,
+  periodicNumber: number,
   height: number,
   weight: number,
   stats: StatItem[]
@@ -20,6 +21,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
   {
     imageURL,
     name,
+    periodicNumber,
     height,
     weight,
     stats
@@ -47,7 +49,12 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
 
           <div className={classes.pokedata}>
             <h2 className={classes.h2}>Pokédex data</h2>
-            <h1 className="pokedata__name">{name}</h1>
+            <h1 className={classes.name}>
+              {name}
+              <span className={classes.periodicNumber}>
+                #{periodicNumber}
+              </span>
+            </h1>
             <div className="pokedata__height">Height: {height}m</div>
             <div className="pokedata__weight">Weight: {weight}kg</div>
           </div>

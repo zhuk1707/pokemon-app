@@ -1,0 +1,33 @@
+.errorScreenWrap {
+  display: flex;
+  align-items: center;
+
+}
+.errorScreen {
+  margin-top: 2rem;
+  background-color: #ececec;
+  padding: 2rem;
+  border-radius: 4rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+h1, p {
+  margin: 0;
+}
+
+.header {
+
+  font-size: 4rem;
+  margin: 0 0 1rem 0;
+}
+
+.paragraph {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.paragraph i {
+  opacity: .7;
+}

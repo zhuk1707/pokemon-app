@@ -1,5 +1,5 @@
-import { Header } from '../components/Header/Header.tsx'
-import { PokemonList } from '../components/PokemonList/PokemonList.tsx'
+import { Header } from '../../components/Header/Header.tsx'
+import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
 
 export const FavoritePokemonScreen = () => {
   interface Pokemon {
