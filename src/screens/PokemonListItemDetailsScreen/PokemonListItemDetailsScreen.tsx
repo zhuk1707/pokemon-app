@@ -1,8 +1,8 @@
 import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
 import { useParams } from 'react-router'
 import ImagePlaceholder from '../../assets/placeholder.png'
-import { fakePokeApi } from '../PokemonListScreen/PokemonListScreen.tsx'
 import { Card } from '../../components/Card/Card.tsx'
+import { fakePokeApi } from '../../features/pokemonList/pokemonSlice.ts'
 
 type StatItem = {
   statLabel: string;
