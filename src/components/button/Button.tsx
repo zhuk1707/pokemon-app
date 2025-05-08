@@ -17,8 +17,7 @@ export const Button: React.FC<ButtonProps> = (
     disabled = false,
     active = false,
     round = false,
-    onClick = () => {
-    }
+    onClick
   }) => {
   const className: string = `${classes.button}
    ${round && classes.button_round}

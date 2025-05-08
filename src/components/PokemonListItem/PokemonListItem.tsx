@@ -4,16 +4,16 @@ import { Button } from '../button/Button.tsx'
 import { useNavigate } from 'react-router'
 
 type PokemonListItemProps = {
-  pokemonName: string;
-  periodicNumber: number | string;
-  isFavorite: boolean;
-  isInComparison: boolean;
+  pokemonName?: string;
+  periodicNumber?: number | string;
+  isFavorite?: boolean;
+  isInComparison?: boolean;
 };
 
 export const PokemonListItem: React.FC<PokemonListItemProps> = (
   {
     pokemonName,
-    periodicNumber,
+    periodicNumber = 10,
     isFavorite,
     isInComparison,
   }) => {
