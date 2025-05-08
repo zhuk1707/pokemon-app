@@ -1,19 +1,23 @@
 import { Header } from '../../components/Header/Header.tsx'
 import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
-import { Pokemon } from '../../features/pokemonList/pokemonSlice.ts'
+
+interface Pokemonn {
+  name: string,
+  url: string
+}
 
 export const FavoritePokemonScreen = () => {
-  const fakePokeApi: Pokemon[] = [
+  const fakePokeApi: Pokemonn[] = [
     {
-      name: "pikachu",
-      url: "https://pokeapi.co/api/v2/pokemon/25/"
-    },
+      name: 'pikachu',
+      url: 'https://pokeapi.co/api/v2/pokemon/25/'
+    }
   ]
 
   return (
     < >
       <Header subtitle={'Favorites'} />
-      <PokemonList list={fakePokeApi}/>
+      <PokemonList list={fakePokeApi} />
     </>
   )
 }
