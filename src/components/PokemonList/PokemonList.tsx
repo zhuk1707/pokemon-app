@@ -8,7 +8,6 @@ interface PokemonListProps {
   list?: Pokemon[]
 }
 
-
 export const PokemonList = ({ list = [] }: PokemonListProps) => {
   const getPeriodicNumberFromUrl = (url: string): number => {
     return Number(url

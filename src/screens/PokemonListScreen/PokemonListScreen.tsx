@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
 import { useEffect, useState } from 'react'
 import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
-import Loader from '../../components/Loader/Loader.tsx'
+import { Loader } from '../../components/Loader/Loader.tsx'
 
 export const PokemonListScreen = () => {
   const dispatch = useDispatch<AppDispatch>()

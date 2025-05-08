@@ -1,6 +1,6 @@
 import classes from './Loader.module.css'
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <section className={classes.loaderOuter}>
       <div className="container">
@@ -26,4 +26,4 @@ const Loader = () => {
   )
 }
 
-export default Loader
+
