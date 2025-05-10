@@ -1,6 +1,3 @@
-details {
-}
-
 .card {
   margin-top: 1rem;
   background-color: #ececec;
@@ -15,8 +12,6 @@ details {
 .h2 {
   opacity: .7;
 }
-
-.name {}
 
 .periodicNumber {
   margin-left: 1rem;
@@ -34,10 +29,15 @@ details {
   background: white;
   border-radius: 2rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image img {
   object-fit: cover;
+  max-width: 100%;
+  height: auto;
 }
 
 .controls {
@@ -49,10 +49,45 @@ details {
   width: 100%;
 }
 
-
 .stats {
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 
+@media (max-width: 1024px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1.5rem;
+    border-radius: 3rem;
+  }
+
+  .image {
+    border-radius: 1.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+
+  .image {
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

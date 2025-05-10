@@ -20,7 +20,7 @@ interface PokemonDetailsProps {
 export const PokemonDetails: React.FC<PokemonDetailsProps> = (
   {
     imageURL,
-    name,
+    // name,
     periodicNumber,
     height,
     weight,
@@ -50,7 +50,8 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
           <div className={classes.pokedata}>
             <h2 className={classes.h2}>Pokédex data</h2>
             <h1 className={classes.name}>
-              {name}
+              {'pikachu228'}
+              {/*{name}*/}
               <span className={classes.periodicNumber}>
                 #{periodicNumber}
               </span>

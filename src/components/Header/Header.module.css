@@ -15,6 +15,7 @@
 .headerLogo {
   font-weight: 800;
   display: flex;
+  align-items: baseline;
   flex-wrap: wrap;
   gap: .4rem;
 }
