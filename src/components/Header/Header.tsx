@@ -16,7 +16,8 @@ export const Header = ({ subtitle }: { subtitle?: string }) => {
           <h1 className={classes.headerLogo}>
             <Link
               className={classes.logoLink}
-              to="/">Pokémon</Link>
+              to="/">Pokémon
+            </Link>
             <span className={classes.subtitle}>{subtitle && subtitle}</span>
           </h1>
 

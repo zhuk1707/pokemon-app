@@ -1,6 +1,7 @@
 import classes from './ComparisonItem.module.css'
 import { StatsItem } from '../StatsItem/StatsItem.tsx'
 import { Button } from '../button/Button.tsx'
+import trashIcon from '../../assets/trash.svg'
 
 type StatItem = {
   statLabel: string;
@@ -68,6 +69,8 @@ export const ComparisonItem = (
         <div className={classes.buttonWrapper}>
           <Button
             title={'Delete From Comparison'}
+            hiddenTittle
+            icon={<img src={trashIcon} alt="" />}
             active={true}
           />
         </div>

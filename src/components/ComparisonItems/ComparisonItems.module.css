@@ -7,3 +7,18 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+
+@media (max-width: 768px) {
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 425px) {
+
+}
+
+@media (max-width: 320px) {
+
+}
