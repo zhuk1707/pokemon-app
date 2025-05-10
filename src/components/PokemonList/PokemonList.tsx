@@ -1,38 +1,39 @@
 import { PokemonListItem } from '../PokemonListItem/PokemonListItem.tsx'
 import classes from './PokemonList.module.css'
+import { Pokemon } from '../../features/pokemonList/pokemonSlice.ts'
+import capitalizeWord from '../../utils/capitalizeWord.ts'
 
-interface Pokemon {
-  pokemonName: string;
-  periodicNumber: number;
-  isFavorite: boolean;
-  isInComparison: boolean;
-}
 
 interface PokemonListProps {
-  list: Pokemon[]
-  variant?: 'default' | 'favorite'
+  list?: Pokemon[]
 }
 
-
-export const PokemonList = ({ list, variant = 'default'}: PokemonListProps) => {
-  const filteredList = variant === 'favorite'
-    ? list .filter((item) => {return item.isFavorite && item})
-    : list
+export const PokemonList = ({ list = [] }: PokemonListProps) => {
+  const getPeriodicNumberFromUrl = (url: string): number => {
+    return Number(url
+      .replace('https://pokeapi.co/api/v2/pokemon/', '')
+      .replace('/', ''))
+  }
 
   return (
     <div className={classes.listOuter}>
       <div className="container">
         <div className={classes.list}>
-          {filteredList
-            .map((pokemon) => (
-              <PokemonListItem
-                key={pokemon.periodicNumber}
-                pokemonName={pokemon.pokemonName}
-                periodicNumber={pokemon.periodicNumber}
-                isFavorite={pokemon.isFavorite}
-                isInComparison={pokemon.isInComparison}
-              />
-            ))}
+
+          {list.length >= 1 && list
+            .map((pokemon) => {
+              const periodicNumber = getPeriodicNumberFromUrl(pokemon.url)
+
+              return (
+                <PokemonListItem
+                  key={periodicNumber}
+                  pokemonName={capitalizeWord(pokemon.name)}
+                  periodicNumber={periodicNumber}
+                  isFavorite={false}
+                  isInComparison={false}
+                />
+              )
+            })}
         </div>
       </div>
     </div>
