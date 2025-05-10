@@ -37,3 +37,24 @@
   display: flex;
   gap: 2rem;
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 3rem;
+  }
+
+  .buttons {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 1rem 1rem 1rem 2rem;
+  }
+
+  .buttons {
+    gap: .5rem;
+  }
+}

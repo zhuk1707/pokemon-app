@@ -1,6 +1,9 @@
 import { Button } from '../button/Button.tsx'
 import classes from './Pagination.module.css'
 import getPages from '../../utils/getPages.ts'
+import arrowLeftIcon from '../../assets/arrow-left.svg'
+import arrowRightIcon from '../../assets/arrow-right.svg'
+
 
 interface PaginationProps {
   pageCount: number
@@ -17,6 +20,8 @@ export const Pagination = (
         <div className={classes.pagination}>
           <Button
             title={'Prev'}
+            hiddenTittle
+            icon ={<img src={arrowLeftIcon} alt="" />}
             onClick={() => onPageChange(currentPage - 1)}
             disabled={!(currentPage > 1)}
           />
@@ -32,6 +37,8 @@ export const Pagination = (
 
           <Button
             title={'Next'}
+            hiddenTittle
+            icon ={<img src={arrowRightIcon} alt="" />}
             onClick={() => onPageChange(currentPage + 1)}
             disabled={!(currentPage < pageCount)}
           />

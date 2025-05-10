@@ -5,9 +5,10 @@ interface ButtonProps {
   icon?: React.ReactNode
   title?: string
   disabled?: boolean
-  active?: boolean;
-  round?:boolean
-  onClick?: () => void;
+  active?: boolean
+  hiddenTittle?: boolean
+  round?: boolean
+  onClick?: () => void
 }
 
 export const Button: React.FC<ButtonProps> = (
@@ -16,6 +17,7 @@ export const Button: React.FC<ButtonProps> = (
     title,
     disabled = false,
     active = false,
+    hiddenTittle = false,
     round = false,
     onClick
   }) => {
@@ -32,7 +34,10 @@ export const Button: React.FC<ButtonProps> = (
       onClick={!disabled ? onClick : undefined}
     >
       {icon && <span className={classes.buttonIcon}>{icon}</span>}
-      {title && <span className="button__title">{title}</span>}
+      {title &&
+        <span className={`${classes.buttonTitle} ${hiddenTittle && classes.buttonTitle__hidden}`}>
+          {title}
+        </span>}
     </button>
   )
 }

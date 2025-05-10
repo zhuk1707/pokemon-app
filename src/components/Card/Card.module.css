@@ -8,3 +8,15 @@
 .card h2 {
   opacity: .7;
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .card {
+    padding: 1rem;
+  }
+}
