@@ -1,4 +1,4 @@
-import {  useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
 import { useEffect } from 'react'
@@ -7,10 +7,10 @@ import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
 import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
 import capitalizeWord from '../../utils/capitalizeWord.ts'
-// import { Button } from '../../components/button/Button.tsx'
-// import arrowLeftIcon from '../../assets/arrow-left.svg'
-// import arrowRightIcon from '../../assets/arrow-right.svg'
-// import classes from '../../components/PokemonListItemDetails/PokemonDetails.module.css'
+import { Button } from '../../components/button/Button.tsx'
+import arrowLeftIcon from '../../assets/arrow-left.svg'
+import arrowRightIcon from '../../assets/arrow-right.svg'
+import classes from '../../components/PokemonListItemDetails/PokemonDetails.module.css'
 
 
 export const PokemonListItemDetailsScreen = () => {
@@ -23,28 +23,35 @@ export const PokemonListItemDetailsScreen = () => {
     dispatch(fetchPokemonDetails(id as string))
   }, [dispatch, id])
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   return (
     <div>
-      {/*<div className="container">*/}
-      {/*  <div className={classes.navigation}>*/}
-      {/*    <Button*/}
-      {/*      title={'Prev'}*/}
-      {/*      hiddenTittle*/}
-      {/*      disabled = {!id || Number(id -1) === 0}*/}
-      {/*      icon={<img src={arrowLeftIcon} alt="" />}*/}
-      {/*      onClick={() => {*/}
-      {/*        navigate(`/details/${String(Number(id - 1))}`)*/}
-      {/*      }}*/}
-      {/*    />*/}
-      {/*    <Button*/}
-      {/*      title={'Next'}*/}
-      {/*      hiddenTittle*/}
-      {/*      icon={<img src={arrowRightIcon} alt="" />}*/}
+      <div className="container">
+        <div className={classes.navigation}>
+          <Button
+            title={'Prev'}
+            hiddenTittle
+            disabled={!id || Number(id) - 1 === 0}
+            icon={<img src={arrowLeftIcon} alt="" />}
+            onClick={() => {
+              if (id) {
+                navigate(`/details/${String(Number(id) - 1)}`)
+              }
+            }}
+          />
+          <Button
+            title={'Next'}
+            hiddenTittle
+            icon={<img src={arrowRightIcon} alt="" />}
+            onClick={() => {
+              if (id) {
+                navigate(`/details/${String(Number(id) + 1)}`)
+              }
+            }}
+          />
 
-      {/*    />*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+        </div>
+      </div>
 
 
       {loading && <Loader />}
