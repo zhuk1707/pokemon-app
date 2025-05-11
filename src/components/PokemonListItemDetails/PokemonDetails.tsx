@@ -3,7 +3,7 @@ import { Button } from '../button/Button.tsx'
 import React from 'react'
 import { PokemonDetailsTypes } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 // import { useNavigate } from 'react-router'
-// import { StatsItem } from '../StatsItem/StatsItem.tsx'
+import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
 
 
 export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
@@ -57,17 +57,18 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
           </div>
 
 
-          {/*<div className={`${classes.stats}`}>
+          <div className={`${classes.stats}`}>
             <h2 className={classes.h2}>Stats</h2>
-            {stats.map((el: StatItem, index) => (
+            {stats.map((el: statsItemProps, index) => (
               <StatsItem
-                statLabel={el.statLabel}
-                value={el.value}
                 key={index}
+                base_stat={el.base_stat}
+                stat={{
+                  name: el.stat.name
+                }}
               />
             ))}
-
-          </div>*/}
+          </div>
         </div>
       </div>
     </div>
