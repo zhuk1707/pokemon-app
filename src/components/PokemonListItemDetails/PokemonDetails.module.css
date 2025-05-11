@@ -20,9 +20,18 @@
   opacity: .7;
 }
 
+.name {
+  margin-bottom: 1rem;
+}
+
 .periodicNumber {
   margin-left: 1rem;
   opacity: .7;
+}
+
+.label {
+  display: inline-block;
+  width: 5rem;
 }
 
 .label,
@@ -31,9 +40,89 @@
 }
 
 .number {
-  margin-left: .5rem;
   margin-right: .2rem;
   font-weight: 600;
+}
+
+.type {
+  padding: .1rem .2rem;
+  border-radius: .4rem;
+  margin-right: .5rem;
+  color: white;
+  text-shadow: 1px 1px 2px #00000070;
+}
+
+.normal {
+  border-color: var(--normal);
+  background-color: var(--normal);
+}
+.fire {
+  border-color: var(--fire);
+  background-color: var(--fire);
+}
+.water {
+  border-color: var(--water);
+  background-color: var(--water);
+}
+.electric {
+  border-color: var(--electric);
+  background-color: var(--electric);
+}
+.grass {
+  border-color: var(--grass);
+  background-color: var(--grass);
+}
+.ice {
+  border-color: var(--ice);
+  background-color: var(--ice);
+}
+.fighting {
+  border-color: var(--fighting);
+  background-color: var(--fighting);
+}
+.poison {
+  border-color: var(--poison);
+  background-color: var(--poison);
+}
+.ground {
+  border-color: var(--ground);
+  background-color: var(--ground);
+}
+.flying {
+  border-color: var(--flying);
+  background-color: var(--flying);
+}
+.psychic {
+  border-color: var(--psychic);
+  background-color: var(--psychic);
+}
+.bug {
+  border-color: var(--bug);
+  background-color: var(--bug);
+}
+.rock {
+  border-color: var(--rock);
+  background-color: var(--rock);
+}
+.ghost {
+  border-color: var(--ghost);
+  background-color: var(--ghost);
+}
+.dragon {
+  border-color: var(--dragon);
+  background-color: var(--dragon);
+}
+.dark {
+  border-color: var(--dark);
+  background-color: var(--dark);
+}
+.steel {
+  border-color: var(--steel);
+  background-color: var(--steel);
+}
+.fairy {
+  border-color: var(--fairy);
+  background-color: var(--fairy);
 }
 
 .image_n_controls {

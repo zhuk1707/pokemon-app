@@ -66,6 +66,7 @@ export const PokemonListItemDetailsScreen = () => {
             front_default: pokemonDetailsData.sprites.front_default
           }}
           stats={pokemonDetailsData.stats}
+          types={pokemonDetailsData.types}
         />
       }
 

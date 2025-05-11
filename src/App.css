@@ -4,6 +4,26 @@
   --primary-red: #ff2c11;
   --filter-primary-red: invert(24%) sepia(32%) saturate(6795%) hue-rotate(353deg) brightness(103%) contrast(103%);
   --filter-dimgray: invert(42%) sepia(2%) saturate(0%) hue-rotate(27deg) brightness(93%) contrast(81%);
+
+  /*pokemon type color*/
+  --normal: #99a3af;
+  --fire: #f82e34;
+  --water: #ffb801;
+  --electric: #4ea2ff;
+  --grass: #00c752;
+  --ice: #8fc4ff;
+  --fighting: #e3010d;
+  --poison: #c17bfe;
+  --ground: #d08602;
+  --flying: #7a87ff;
+  --psychic: #fc62b8;
+  --bug: #00a73e;
+  --rock: #894b00;
+  --ghost: #9a0ff9;
+  --dragon: #5038fa;
+  --dark: #364154;
+  --steel: #6a7181;
+  --fairy: #fda5d5;
 }
 
 * {

@@ -7,6 +7,12 @@ export interface Stat {
   };
 }
 
+export interface PokemonType {
+  type: {
+    name: string;
+  };
+}
+
 export interface PokemonDetailsTypes {
   id: string;
   name: string;
@@ -16,6 +22,7 @@ export interface PokemonDetailsTypes {
     front_default: string;
   };
   stats: Stat[];
+  types: PokemonType[];
 }
 
 export interface PokemonDetailsState {

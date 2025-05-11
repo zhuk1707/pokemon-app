@@ -1,7 +1,7 @@
 import classes from './PokemonDetails.module.css'
 import { Button } from '../button/Button.tsx'
 import React from 'react'
-import { PokemonDetailsTypes } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 // import { useNavigate } from 'react-router'
 import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
 
@@ -12,8 +12,9 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
     name,
     height,
     weight,
+    sprites,
     stats,
-    sprites
+    types
   }) => {
   return (
     <div className={classes.details}>
@@ -44,6 +45,23 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
                 #{id}
               </span>
             </h1>
+
+            <div className={classes.pokedataType}>
+              <span className={classes.label}>Type</span>
+              {types &&
+                types.map((el: PokemonType) => {
+                  return (
+                    <span
+                      className={`${classes.type} ${classes[el.type.name]}`}
+                    >
+                      {el.type.name.toUpperCase()}
+                    </span>
+                  )
+                })
+              }
+
+            </div>
+
             <div className={classes.pokedataHeight}>
               <span className={classes.label}>Height</span>
               <span className={classes.number}>{(Number(height) / 10).toString()}</span>
