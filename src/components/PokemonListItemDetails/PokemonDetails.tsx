@@ -1,30 +1,19 @@
 import classes from './PokemonDetails.module.css'
-import React from 'react'
 import { Button } from '../button/Button.tsx'
-import { StatsItem } from '../StatsItem/StatsItem.tsx'
+import React from 'react'
+import { PokemonDetailsTypes } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+// import { useNavigate } from 'react-router'
+// import { StatsItem } from '../StatsItem/StatsItem.tsx'
 
-type StatItem = {
-  statLabel: string;
-  value: number;
-};
 
-interface PokemonDetailsProps {
-  imageURL: string,
-  name: string,
-  periodicNumber: number,
-  height: number,
-  weight: number,
-  stats: StatItem[]
-}
-
-export const PokemonDetails: React.FC<PokemonDetailsProps> = (
+export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
   {
-    imageURL,
-    // name,
-    periodicNumber,
+    id,
+    name,
     height,
     weight,
-    stats
+    stats,
+    sprites
   }) => {
   return (
     <div className={classes.details}>
@@ -33,7 +22,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
 
           <div className={classes.image_n_controls}>
             <div className={classes.image}>
-              <img src={imageURL} alt="" />
+              <img src={sprites.front_default} alt="" />
             </div>
             <div className={classes.controls}>
               <Button
@@ -50,17 +39,25 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
           <div className={classes.pokedata}>
             <h2 className={classes.h2}>Pokédex data</h2>
             <h1 className={classes.name}>
-              {'pikachu228'}
-              {/*{name}*/}
+              {name}
               <span className={classes.periodicNumber}>
-                #{periodicNumber}
+                #{id}
               </span>
             </h1>
-            <div className="pokedata__height">Height: {height}m</div>
-            <div className="pokedata__weight">Weight: {weight}kg</div>
+            <div className={classes.pokedataHeight}>
+              <span className={classes.label}>Height</span>
+              <span className={classes.number}>{(Number(height) / 10).toString()}</span>
+              <span className={classes.measure}>m</span>
+            </div>
+            <div className={classes.pokedataWeight}>
+              <span className={classes.label}>Weight</span>
+              <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
+              <span className={classes.measure}>kg</span>
+            </div>
           </div>
 
-          <div className={`${classes.stats}`}>
+
+          {/*<div className={`${classes.stats}`}>
             <h2 className={classes.h2}>Stats</h2>
             {stats.map((el: StatItem, index) => (
               <StatsItem
@@ -70,7 +67,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
               />
             ))}
 
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>

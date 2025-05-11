@@ -1,3 +1,10 @@
+.navigation {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .card {
   margin-top: 1rem;
   background-color: #ececec;
@@ -16,6 +23,17 @@
 .periodicNumber {
   margin-left: 1rem;
   opacity: .7;
+}
+
+.label,
+.measure {
+  opacity: .8;
+}
+
+.number {
+  margin-left: .5rem;
+  margin-right: .2rem;
+  font-weight: 600;
 }
 
 .image_n_controls {
@@ -38,6 +56,7 @@
   object-fit: cover;
   max-width: 100%;
   height: auto;
+  width: 300px;
 }
 
 .controls {
