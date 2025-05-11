@@ -13,14 +13,20 @@ export interface PokemonType {
   };
 }
 
+export interface PokemonSprites {
+  other: {
+    'official-artwork': {
+      front_default: string;
+    };
+  };
+}
+
 export interface PokemonDetailsTypes {
   id: string;
   name: string;
   height: number;
   weight: number;
-  sprites: {
-    front_default: string;
-  };
+  sprites: PokemonSprites;
   stats: Stat[];
   types: PokemonType[];
 }

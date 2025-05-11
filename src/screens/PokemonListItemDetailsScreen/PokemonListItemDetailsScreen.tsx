@@ -24,7 +24,6 @@ export const PokemonListItemDetailsScreen = () => {
   }, [dispatch, id])
 
   // const navigate = useNavigate()
-
   return (
     <div>
       {/*<div className="container">*/}
@@ -63,7 +62,7 @@ export const PokemonListItemDetailsScreen = () => {
           height={pokemonDetailsData.height}
           weight={pokemonDetailsData.weight}
           sprites={{
-            front_default: pokemonDetailsData.sprites.front_default
+            front_default: pokemonDetailsData.sprites.other['official-artwork'].front_default
           }}
           stats={pokemonDetailsData.stats}
           types={pokemonDetailsData.types}
