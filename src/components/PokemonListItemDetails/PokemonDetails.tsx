@@ -23,7 +23,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
 
           <div className={classes.image_n_controls}>
             <div className={classes.image}>
-              <img src={sprites.front_default} alt="" />
+              <img src={sprites.other['official-artwork'].front_default} alt="" />
             </div>
             <div className={classes.controls}>
               <Button

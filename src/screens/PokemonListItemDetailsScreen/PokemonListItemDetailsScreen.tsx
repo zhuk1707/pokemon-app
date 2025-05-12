@@ -19,6 +19,8 @@ export const PokemonListItemDetailsScreen = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { pokemonDetailsData, loading, error } = useSelector((state: RootState) => state.pokemonDetails)
 
+  const periodicNumber = pokemonDetailsData && pokemonDetailsData.id
+
   useEffect(() => {
     dispatch(fetchPokemonDetails(id as string))
   }, [dispatch, id])
@@ -31,11 +33,11 @@ export const PokemonListItemDetailsScreen = () => {
           <Button
             title={'Prev'}
             hiddenTittle
-            disabled={!id || Number(id) - 1 === 0}
+            disabled={!id || Number(periodicNumber) - 1 === 0}
             icon={<img src={arrowLeftIcon} alt="" />}
             onClick={() => {
-              if (id) {
-                navigate(`/details/${String(Number(id) - 1)}`)
+              if (periodicNumber) {
+                navigate(`/details/${String(Number(periodicNumber) - 1)}`)
               }
             }}
           />
@@ -44,8 +46,8 @@ export const PokemonListItemDetailsScreen = () => {
             hiddenTittle
             icon={<img src={arrowRightIcon} alt="" />}
             onClick={() => {
-              if (id) {
-                navigate(`/details/${String(Number(id) + 1)}`)
+              if (periodicNumber) {
+                navigate(`/details/${String(Number(periodicNumber) + 1)}`)
               }
             }}
           />
@@ -53,30 +55,32 @@ export const PokemonListItemDetailsScreen = () => {
         </div>
       </div>
 
-
-      {loading && <Loader />}
-
-      {error &&
+      {loading ? (
+        <Loader />
+      ) : error ? (
         <Card>
           <h1>Oops!</h1>
           <h2>{error}</h2>
-        </Card>}
-
-      {pokemonDetailsData &&
+        </Card>
+      ) : pokemonDetailsData && (
         <PokemonDetails
-          id={id as string}
+          id={pokemonDetailsData.id}
           name={capitalizeWord(pokemonDetailsData.name)}
           height={pokemonDetailsData.height}
           weight={pokemonDetailsData.weight}
           sprites={{
-            front_default: pokemonDetailsData.sprites.other['official-artwork'].front_default
+            other: {
+              'official-artwork': {
+                front_default: pokemonDetailsData.sprites.other['official-artwork'].front_default
+              }
+            }
           }}
+
           stats={pokemonDetailsData.stats}
           types={pokemonDetailsData.types}
         />
+      )
       }
-
-
     </div>
   )
 }
