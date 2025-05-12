@@ -1,5 +1,5 @@
 import classes from './ComparisonItems.module.css'
-import { ComparisonItem } from '../ComparisonItem/ComparisonItem.tsx'
+// import { ComparisonItem } from '../ComparisonItem/ComparisonItem.tsx'
 import pikachuImageUrl from '../../assets/pikachu.png'
 import larvitarImageUrl from '../../assets/larvitar.png'
 
@@ -97,7 +97,7 @@ export const ComparisonItems = () => {
     <section className={classes.comparisonWrapper}>
       <div className="container">
         <div className={classes.comparison}>
-          {mockData.map((comparisonItem: MockData, index) => {
+          {/*{mockData.map((comparisonItem: MockData, index) => {
             return (
               <ComparisonItem
                 key={index}
@@ -114,7 +114,7 @@ export const ComparisonItems = () => {
                 display={index % 2 !== 0 ? 'default' : 'alternative'}
               />
             )
-          })}
+          })}*/}
 
 
         </div>
