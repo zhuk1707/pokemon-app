@@ -45,6 +45,10 @@
   margin-bottom: 1rem;
 }
 
+.periodicNumber {
+  opacity: .7;
+}
+
 .details {
   text-align: left;
 }

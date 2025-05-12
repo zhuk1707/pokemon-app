@@ -2,7 +2,7 @@ import classes from './StatsItem.module.css'
 import React from 'react'
 import { Stat } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 
-interface statsItemDisplayProps{
+export interface statsItemDisplayProps{
   display?: 'default' | 'alternative';
   comparisonFlag?: number
 }
