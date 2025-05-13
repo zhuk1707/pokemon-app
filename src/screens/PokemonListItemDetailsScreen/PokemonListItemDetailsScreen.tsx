@@ -1,60 +1,86 @@
-import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
-import { useParams } from 'react-router'
-import ImagePlaceholder from '../../assets/placeholder.png'
+import { useNavigate, useParams } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../store/store.ts'
+import { useEffect } from 'react'
+import { fetchPokemonDetails } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
+import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
+import capitalizeWord from '../../utils/capitalizeWord.ts'
+import { Button } from '../../components/button/Button.tsx'
+import arrowLeftIcon from '../../assets/arrow-left.svg'
+import arrowRightIcon from '../../assets/arrow-right.svg'
+import classes from '../../components/PokemonListItemDetails/PokemonDetails.module.css'
 
-type StatItem = {
-  statLabel: string;
-  value: number;
-};
-
-const mockStats: StatItem[] = [
-  {
-    statLabel: 'HP',
-    value: 35
-  },
-  {
-    statLabel: 'Attack',
-    value: 55
-  },
-  {
-    statLabel: 'Defense',
-    value: 40
-  },
-  {
-    statLabel: 'Sp.Atk',
-    value: 50
-  },
-  {
-    statLabel: 'Sp.Def',
-    value: 50
-  },
-  {
-    statLabel: 'Speed',
-    value: 90
-  }
-]
 
 export const PokemonListItemDetailsScreen = () => {
   const { id } = useParams<{ id: string }>()
 
+  const dispatch = useDispatch<AppDispatch>()
+  const { pokemonDetailsData, loading, error } = useSelector((state: RootState) => state.pokemonDetails)
 
+  const periodicNumber = pokemonDetailsData && pokemonDetailsData.id
+
+  useEffect(() => {
+    dispatch(fetchPokemonDetails(id as string))
+  }, [dispatch, id])
+
+  const navigate = useNavigate()
   return (
     <div>
-      <PokemonDetails
-        imageURL={ImagePlaceholder}
-        name={'currentPokemon.pokemonName'}
-        periodicNumber={Number(id)}
-        height={10}
-        weight={1}
-        stats={mockStats}
-      />
-      :
-      <Card>
-        <h1>Oops!</h1>
-        <h2>There are no Pokémon with this ID.</h2>
-      </Card>
+      <div className="container">
+        <div className={classes.navigation}>
+          <Button
+            title={'Prev'}
+            hiddenTittle
+            disabled={!id || Number(periodicNumber) - 1 === 0}
+            icon={<img src={arrowLeftIcon} alt="" />}
+            onClick={() => {
+              if (periodicNumber) {
+                navigate(`/details/${String(Number(periodicNumber) - 1)}`)
+              }
+            }}
+          />
+          <Button
+            title={'Next'}
+            hiddenTittle
+            icon={<img src={arrowRightIcon} alt="" />}
+            onClick={() => {
+              if (periodicNumber) {
+                navigate(`/details/${String(Number(periodicNumber) + 1)}`)
+              }
+            }}
+          />
 
+        </div>
+      </div>
+
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Card>
+          <h1>Oops!</h1>
+          <h2>{error}</h2>
+        </Card>
+      ) : pokemonDetailsData && (
+        <PokemonDetails
+          id={pokemonDetailsData.id}
+          name={capitalizeWord(pokemonDetailsData.name)}
+          height={pokemonDetailsData.height}
+          weight={pokemonDetailsData.weight}
+          sprites={{
+            other: {
+              'official-artwork': {
+                front_default: pokemonDetailsData.sprites.other['official-artwork'].front_default
+              }
+            }
+          }}
+
+          stats={pokemonDetailsData.stats}
+          types={pokemonDetailsData.types}
+        />
+      )
+      }
     </div>
   )
 }

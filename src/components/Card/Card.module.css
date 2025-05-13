@@ -1,10 +1,35 @@
 .card {
   margin-top: 1rem;
   padding: 4rem;
-  border-radius: 4rem ;
+  border-radius: 4rem;
   background-color: #ececec;
 }
 
 .card h2 {
   opacity: .7;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    padding: 3rem;
+    border-radius: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem;
+    border-radius: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .card h2 {
+    font-size: 1.2rem;
+  }
 }

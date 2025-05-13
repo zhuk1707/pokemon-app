@@ -16,7 +16,8 @@ export const Header = ({ subtitle }: { subtitle?: string }) => {
           <h1 className={classes.headerLogo}>
             <Link
               className={classes.logoLink}
-              to="/">Pokémon</Link>
+              to="/">Pokémon
+            </Link>
             <span className={classes.subtitle}>{subtitle && subtitle}</span>
           </h1>
 
@@ -24,16 +25,17 @@ export const Header = ({ subtitle }: { subtitle?: string }) => {
           <div className={classes.buttons}>
             <Button
               title={'Favorites'}
+              hiddenTittle
               icon={<img src={favoriteIcon} alt="" />}
               onClick={() => navigate('/favorite')}
               active={location.pathname === '/favorite'}
             />
             <Button
               title={'Comparison'}
+              hiddenTittle
               icon={<img src={comparisonIcon} alt="" />}
               onClick={() => navigate('/comparison')}
               active={location.pathname === '/comparison'}
-
             />
           </div>
         </div>

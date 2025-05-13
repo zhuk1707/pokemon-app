@@ -15,8 +15,6 @@
   border-color: dimgray;
 }
 
-
-
 .desc {
   display: flex;
   gap: 1rem;
@@ -27,7 +25,6 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-
 }
 
 .name {
@@ -39,5 +36,48 @@
   font-size: 1.4rem;
   font-weight: 200;
   color: dimgray;
+}
+
+@media (max-width: 768px) {
+  .listItem {
+    border-radius: 2rem;
+    padding: 1rem 1rem;
+  }
+
+  .desc {
+    gap: .6rem;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .index {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .listItem {
+    border-radius: 2rem;
+    padding: 0.8rem;
+  }
+
+  .desc {
+    gap: .3rem;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .index {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    gap: .5rem;
+  }
 }
 

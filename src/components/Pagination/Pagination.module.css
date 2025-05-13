@@ -14,5 +14,11 @@
 .disable {
   border-color: dimgrey;
   color: dimgray;
+}
 
+@media (max-width: 768px) {
+  .paginationOuter {
+    display: flex;
+    align-items: center;
+  }
 }

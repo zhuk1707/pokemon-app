@@ -13,7 +13,7 @@
 }
 
 .statsItem_alternative {
-  padding: .5rem  .5rem  .5rem .7rem;
+  padding: .5rem .5rem .5rem .7rem;
   flex-direction: row;
 }
 
@@ -32,4 +32,28 @@
 
 .color_red {
   color: var(--primary-red);
+}
+
+@media (max-width: 768px) {
+  .statsValue {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .statsItem_default,
+  .statsItem_alternative {
+    padding: .4rem;
+  }
+
+  .statsLabel,
+  .statsValue {
+    font-size: .9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .statsValue {
+    font-size: .8rem;
+  }
 }

@@ -1,30 +1,20 @@
 import classes from './PokemonDetails.module.css'
-import React from 'react'
 import { Button } from '../button/Button.tsx'
-import { StatsItem } from '../StatsItem/StatsItem.tsx'
+import React from 'react'
+import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+// import { useNavigate } from 'react-router'
+import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
 
-type StatItem = {
-  statLabel: string;
-  value: number;
-};
 
-interface PokemonDetailsProps {
-  imageURL: string,
-  name: string,
-  periodicNumber: number,
-  height: number,
-  weight: number,
-  stats: StatItem[]
-}
-
-export const PokemonDetails: React.FC<PokemonDetailsProps> = (
+export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
   {
-    imageURL,
+    id,
     name,
-    periodicNumber,
     height,
     weight,
-    stats
+    sprites,
+    stats,
+    types
   }) => {
   return (
     <div className={classes.details}>
@@ -33,7 +23,7 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
 
           <div className={classes.image_n_controls}>
             <div className={classes.image}>
-              <img src={imageURL} alt="" />
+              <img src={sprites.other['official-artwork'].front_default} alt="" />
             </div>
             <div className={classes.controls}>
               <Button
@@ -52,23 +42,50 @@ export const PokemonDetails: React.FC<PokemonDetailsProps> = (
             <h1 className={classes.name}>
               {name}
               <span className={classes.periodicNumber}>
-                #{periodicNumber}
+                #{id}
               </span>
             </h1>
-            <div className="pokedata__height">Height: {height}m</div>
-            <div className="pokedata__weight">Weight: {weight}kg</div>
+
+            <div className={classes.pokedataType}>
+              <span className={classes.label}>Type</span>
+              {types &&
+                types.map((el: PokemonType) => {
+                  return (
+                    <span
+                      className={`${classes.type} ${classes[el.type.name]}`}
+                    >
+                      {el.type.name.toUpperCase()}
+                    </span>
+                  )
+                })
+              }
+
+            </div>
+
+            <div className={classes.pokedataHeight}>
+              <span className={classes.label}>Height</span>
+              <span className={classes.number}>{(Number(height) / 10).toString()}</span>
+              <span className={classes.measure}>m</span>
+            </div>
+            <div className={classes.pokedataWeight}>
+              <span className={classes.label}>Weight</span>
+              <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
+              <span className={classes.measure}>kg</span>
+            </div>
           </div>
+
 
           <div className={`${classes.stats}`}>
             <h2 className={classes.h2}>Stats</h2>
-            {stats.map((el: StatItem, index) => (
+            {stats.map((el: statsItemProps, index) => (
               <StatsItem
-                statLabel={el.statLabel}
-                value={el.value}
                 key={index}
+                base_stat={el.base_stat}
+                stat={{
+                  name: el.stat.name
+                }}
               />
             ))}
-
           </div>
         </div>
       </div>
