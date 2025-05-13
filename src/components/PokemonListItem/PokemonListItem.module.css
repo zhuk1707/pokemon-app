@@ -9,9 +9,11 @@
   justify-content: space-between;
 
   cursor: pointer;
+  transition: all .15s ease-out;
 }
 
 .listItem:hover {
+  transition: all .15s ease-in;
   border-color: dimgray;
 }
 
