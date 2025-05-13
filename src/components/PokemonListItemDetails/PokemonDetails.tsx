@@ -26,6 +26,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
               <img src={sprites.other['official-artwork'].front_default} alt="" />
             </div>
             <div className={classes.controls}>
+              {/*todo add toggle favorite */}
               <Button
                 title={'Favorite'}
                 icon={<img src="/src/assets/heart.svg" alt="" />}

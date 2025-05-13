@@ -9,6 +9,7 @@ interface PokemonListItemProps {
   pokemonName?: string;
   periodicNumber?: number | string;
   isFavorite?: boolean;
+  toggleFavorite?: (string: string) => void;
   isInComparison?: boolean;
 }
 
@@ -17,10 +18,11 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     pokemonName,
     periodicNumber = 0,
     isFavorite = false,
+    toggleFavorite,
     isInComparison = false
   }) => {
 
-  const [isElementFavorite, setIsElementFavorite] = useState<boolean>(isFavorite)
+
   const [isElementInComparison, setIsElementInComparison] = useState<boolean>(isInComparison)
 
   const navigate = useNavigate()
@@ -29,10 +31,10 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     navigate(`/details/${pokemonId}`)
   }
 
-  const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
-    setIsElementFavorite((prev) => !prev)
-  }
+  // const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   event.stopPropagation()
+  //   setIsElementFavorite((prev) => !prev)
+  // }
 
   const handleComparisonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
@@ -53,12 +55,16 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
       <div className={classes.buttons}>
         <Button
           icon={<img src={heartIcon} alt="" />}
-          active={isElementFavorite}
+          active={isFavorite}
           round
-          onClick={() => handleFavoriteClick}
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            toggleFavorite?.(periodicNumber.toString())
+          }}
         />
         <Button
           icon={<img src={scalesIcon} alt="" />}
+          disabled
           active={isElementInComparison}
           round
           onClick={() => handleComparisonClick}
