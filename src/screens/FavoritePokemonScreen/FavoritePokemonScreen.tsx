@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
 import { useEffect } from 'react'
 import { fetchFavoritePokemons } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
+import { Card } from '../../components/Card/Card.tsx'
+import { Loader } from '../../components/Loader/Loader.tsx'
 
 
 export const FavoritePokemonScreen = () => {
@@ -11,19 +13,30 @@ export const FavoritePokemonScreen = () => {
   const {
     favoriteIds,
     favoritePokemonsList,
-    // loading,
-    // error
+    loading,
+    error
   } = useSelector((state: RootState) => state.favoritePokemons)
 
 
   useEffect(() => {
     dispatch(fetchFavoritePokemons(favoriteIds))
-  }, [dispatch, favoriteIds, favoritePokemonsList])
+  }, [dispatch, favoriteIds])
 
   return (
     < >
       <Header subtitle={'Favorites'} />
-      <PokemonList list={favoritePokemonsList} />
+
+      {loading
+        ? (<Loader />)
+        : error
+          ? (<Card><h1>Oops!</h1><h2>{error}</h2></Card>)
+          : favoriteIds.length
+            ? (<PokemonList list={favoritePokemonsList} />)
+            : (<Card>
+                <h1>No favorite Pokémons</h1>
+              </Card>
+            )
+      }
     </>
   )
 }
