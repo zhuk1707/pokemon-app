@@ -75,9 +75,9 @@ export const PokemonListItemDetailsScreen = () => {
               }
             }
           }}
-
           stats={pokemonDetailsData.stats}
           types={pokemonDetailsData.types}
+
         />
       )
       }
