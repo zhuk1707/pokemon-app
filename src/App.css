@@ -2,6 +2,14 @@
 
 :root {
   --primary-red: #ff2c11;
+  --primary-black: #000;
+  --secondary-black: rgba(0, 0, 0, 0.7);
+  --dark-grey: #696969; /*dimgrey*/
+  --subtitle-grey: #8f8f8f;
+  --border-grey: #ccc;
+  --primary-grey: #ececec;
+  --primary-white: #fafafa;
+
   --filter-primary-red: invert(24%) sepia(32%) saturate(6795%) hue-rotate(353deg) brightness(103%) contrast(103%);
   --filter-dimgray: invert(42%) sepia(2%) saturate(0%) hue-rotate(27deg) brightness(93%) contrast(81%);
 

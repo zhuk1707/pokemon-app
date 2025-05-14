@@ -38,7 +38,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
             </div>
           </div>
 
-          <div className={classes.pokedata}>
+          <div className={classes.pokeData}>
             <h2 className={classes.h2}>Pokédex data</h2>
             <h1 className={classes.name}>
               {name}
@@ -47,31 +47,33 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
               </span>
             </h1>
 
-            <div className={classes.pokedataType}>
-              <span className={classes.label}>Type</span>
-              {types &&
-                types.map((el: PokemonType) => {
-                  return (
-                    <span
-                      className={`${classes.type} ${classes[el.type.name]}`}
-                    >
+            <div className={classes.data}>
+              <div className={classes.pokedataType}>
+                <span className={classes.label}>Type</span>
+                {types &&
+                  types.map((el: PokemonType) => {
+                    return (
+                      <span
+                        className={`${classes.type} ${classes[el.type.name]}`}
+                      >
                       {el.type.name.toUpperCase()}
                     </span>
-                  )
-                })
-              }
+                    )
+                  })
+                }
 
-            </div>
+              </div>
 
-            <div className={classes.pokedataHeight}>
-              <span className={classes.label}>Height</span>
-              <span className={classes.number}>{(Number(height) / 10).toString()}</span>
-              <span className={classes.measure}>m</span>
-            </div>
-            <div className={classes.pokedataWeight}>
-              <span className={classes.label}>Weight</span>
-              <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
-              <span className={classes.measure}>kg</span>
+              <div className={classes.pokedataHeight}>
+                <span className={classes.label}>Height</span>
+                <span className={classes.number}>{(Number(height) / 10).toString()}</span>
+                <span className={classes.measure}>m</span>
+              </div>
+              <div className={classes.pokedataWeight}>
+                <span className={classes.label}>Weight</span>
+                <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
+                <span className={classes.measure}>kg</span>
+              </div>
             </div>
           </div>
 

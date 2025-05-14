@@ -1,8 +1,8 @@
 .listItem {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-grey);
   border-radius: 2rem;
   padding: 1rem 2rem;
-  background-color: #fafafa;
+  background-color: var(--primary-white);
 
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@
 
 .listItem:hover {
   transition: all .15s ease-in;
-  border-color: dimgray;
+  border-color: var(--dark-grey);
 }
 
 .desc {
@@ -37,7 +37,8 @@
 .index {
   font-size: 1.4rem;
   font-weight: 200;
-  color: dimgray;
+  color: var(--subtitle-grey);
+  font-style: italic;
 }
 
 @media (max-width: 768px) {

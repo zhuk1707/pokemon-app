@@ -5,7 +5,7 @@
 }
 .errorScreen {
   margin-top: 2rem;
-  background-color: #ececec;
+  background-color: var(--primary-grey);
   padding: 2rem;
   border-radius: 4rem;
 
