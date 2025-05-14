@@ -229,6 +229,10 @@
     border-radius: 2rem;
   }
 
+  .navigation > button {
+    padding: .8rem
+  }
+
   .image {
     border-radius: 1rem;
     padding: 0.5rem;

@@ -72,11 +72,12 @@
   }
 
   .name {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 
   .index {
-    font-size: 1rem;
+    font-size: .7rem;
+    padding: .4rem;
   }
 
   .buttons {

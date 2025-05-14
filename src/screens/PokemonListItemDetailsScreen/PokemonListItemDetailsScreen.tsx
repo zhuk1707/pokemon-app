@@ -30,6 +30,9 @@ export const PokemonListItemDetailsScreen = () => {
     error: favError
   } = useSelector((state: RootState) => state.favoritePokemons)
 
+  const allPokemonsCount = useSelector((state:RootState) => state.pokemon.count)
+  console.log(allPokemonsCount ? allPokemonsCount : 'error')
+
   useEffect(() => {
     dispatch(fetchPokemonDetails(id as string))
   }, [dispatch, id])
@@ -59,6 +62,7 @@ export const PokemonListItemDetailsScreen = () => {
           <Button
             title={'Next'}
             hiddenTittle
+            disabled={!id || Number(periodicNumber) + 1 > 1024}
             icon={<img src={arrowRightIcon} alt="" />}
             onClick={() => {
               if (periodicNumber) {
