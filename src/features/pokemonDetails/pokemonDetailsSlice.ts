@@ -29,6 +29,8 @@ export interface PokemonDetailsTypes {
   sprites: PokemonSprites;
   stats: Stat[];
   types: PokemonType[];
+  isFavorite?: boolean;
+  toggleFavorite?: (string: string) => void;
 }
 
 export interface PokemonDetailsState {

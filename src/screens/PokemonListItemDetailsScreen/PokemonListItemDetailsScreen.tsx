@@ -11,19 +11,34 @@ import { Button } from '../../components/button/Button.tsx'
 import arrowLeftIcon from '../../assets/arrow-left.svg'
 import arrowRightIcon from '../../assets/arrow-right.svg'
 import classes from '../../components/PokemonListItemDetails/PokemonDetails.module.css'
+import { fetchFavoritePokemons, toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 
 
 export const PokemonListItemDetailsScreen = () => {
   const { id } = useParams<{ id: string }>()
 
   const dispatch = useDispatch<AppDispatch>()
-  const { pokemonDetailsData, loading, error } = useSelector((state: RootState) => state.pokemonDetails)
+  const {
+    pokemonDetailsData,
+    loading,
+    error
+  } = useSelector((state: RootState) => state.pokemonDetails)
 
-  const periodicNumber = pokemonDetailsData && pokemonDetailsData.id
+  const {
+    favoriteIds,
+    loading: favLoading,
+    error: favError
+  } = useSelector((state: RootState) => state.favoritePokemons)
 
   useEffect(() => {
     dispatch(fetchPokemonDetails(id as string))
   }, [dispatch, id])
+
+  useEffect(() => {
+    dispatch(fetchFavoritePokemons(favoriteIds))
+  }, [dispatch, favoriteIds])
+
+  const periodicNumber = pokemonDetailsData && pokemonDetailsData.id
 
   const navigate = useNavigate()
   return (
@@ -55,12 +70,12 @@ export const PokemonListItemDetailsScreen = () => {
         </div>
       </div>
 
-      {loading ? (
+      {(loading || favLoading) ? (
         <Loader />
-      ) : error ? (
+      ) : (error || favError) ? (
         <Card>
           <h1>Oops!</h1>
-          <h2>{error}</h2>
+          <h2>{error ?? favError}</h2>
         </Card>
       ) : pokemonDetailsData && (
         <PokemonDetails
@@ -77,7 +92,9 @@ export const PokemonListItemDetailsScreen = () => {
           }}
           stats={pokemonDetailsData.stats}
           types={pokemonDetailsData.types}
+          isFavorite={favoriteIds.includes(pokemonDetailsData.id.toString())}
 
+          toggleFavorite={(periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))}
         />
       )
       }

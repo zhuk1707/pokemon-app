@@ -31,11 +31,6 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     navigate(`/details/${pokemonId}`)
   }
 
-  // const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.stopPropagation()
-  //   setIsElementFavorite((prev) => !prev)
-  // }
-
   const handleComparisonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
     setIsElementInComparison((prev) => !prev)

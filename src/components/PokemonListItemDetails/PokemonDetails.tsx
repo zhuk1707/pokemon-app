@@ -2,7 +2,6 @@ import classes from './PokemonDetails.module.css'
 import { Button } from '../button/Button.tsx'
 import React from 'react'
 import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
-// import { useNavigate } from 'react-router'
 import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
 
 
@@ -14,26 +13,31 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
     weight,
     sprites,
     stats,
-    types
+    types,
+    isFavorite,
+    toggleFavorite
   }) => {
   return (
     <div className={classes.details}>
       <div className="container">
         <div className={classes.card}>
-
           <div className={classes.image_n_controls}>
             <div className={classes.image}>
               <img src={sprites.other['official-artwork'].front_default} alt="" />
             </div>
             <div className={classes.controls}>
-              {/*todo add toggle favorite */}
               <Button
                 title={'Favorite'}
                 icon={<img src="/src/assets/heart.svg" alt="" />}
+                active={isFavorite}
+                onClick={() => {
+                  toggleFavorite?.(id.toString())
+                }}
               />
               <Button
                 title={'Compare'}
                 icon={<img src="/src/assets/scales.svg" alt="" />}
+                disabled
               />
             </div>
           </div>
