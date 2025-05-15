@@ -1,5 +1,5 @@
 .card {
-  background-color: #ececec;
+  background-color: var(--primary-grey);
   padding: 2rem;
   border-radius: 3rem;
 }
@@ -19,7 +19,7 @@
 .image {
   width: 8rem;
   height: 8rem;
-  background: white;
+  background: var(--primary-white);
   overflow: hidden;
   padding: 1rem;
   border-radius: 1rem;

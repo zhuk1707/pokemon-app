@@ -8,7 +8,7 @@ interface ButtonProps {
   active?: boolean
   hiddenTittle?: boolean
   round?: boolean
-  onClick?: () => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Button: React.FC<ButtonProps> = (

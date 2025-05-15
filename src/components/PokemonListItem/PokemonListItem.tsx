@@ -1,24 +1,29 @@
 import classes from './PokemonListItem.module.css'
-import React from 'react'
-import { Button } from '../button/Button.tsx'
+import React, { useState } from 'react'
+import { Button } from '../button/Button'
 import { useNavigate } from 'react-router'
 import heartIcon from '../../assets/heart.svg'
 import scalesIcon from '../../assets/scales.svg'
 
-type PokemonListItemProps = {
+interface PokemonListItemProps {
   pokemonName?: string;
   periodicNumber?: number | string;
   isFavorite?: boolean;
+  toggleFavorite?: (string: string) => void;
   isInComparison?: boolean;
-};
+}
 
 export const PokemonListItem: React.FC<PokemonListItemProps> = (
   {
     pokemonName,
-    periodicNumber = 10,
-    isFavorite,
-    isInComparison
+    periodicNumber = 0,
+    isFavorite = false,
+    toggleFavorite,
+    isInComparison = false
   }) => {
+
+
+  const [isElementInComparison, setIsElementInComparison] = useState<boolean>(isInComparison)
 
   const navigate = useNavigate()
 
@@ -26,12 +31,16 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     navigate(`/details/${pokemonId}`)
   }
 
+  const handleComparisonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation()
+    setIsElementInComparison((prev) => !prev)
+  }
+
   return (
-    <div key={periodicNumber}
-         className={classes.listItem}
-         onClick={() => {
-           handlePokemonClick(periodicNumber.toString())
-         }}
+    <div
+      key={periodicNumber}
+      className={classes.listItem}
+      onClick={() => handlePokemonClick(periodicNumber.toString())}
     >
       <div className={classes.desc}>
         <div className={classes.name}>{pokemonName}</div>
@@ -43,25 +52,19 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
           icon={<img src={heartIcon} alt="" />}
           active={isFavorite}
           round
-          onClick={() => {
-            console.log('btn clicked')
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            toggleFavorite?.(periodicNumber.toString())
           }}
         />
         <Button
           icon={<img src={scalesIcon} alt="" />}
-          active={isInComparison}
+          disabled
+          active={isElementInComparison}
           round
-          onClick={() => {
-            console.log('btn clicked')
-          }}
+          onClick={() => handleComparisonClick}
         />
       </div>
     </div>
   )
 }
-
-
-/*
-Should be clickable (we can just log the name of Pokémon
- in the console for now. Later we’ll add navigation to a details page)
-*/

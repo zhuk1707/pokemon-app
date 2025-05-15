@@ -22,3 +22,14 @@
     align-items: center;
   }
 }
+
+@media (max-width: 425px) {
+  .pagination {
+    flex-wrap: wrap;
+    padding: -5rem  ;
+  }
+
+  .pagination > button {
+    padding: .8em;
+  }
+}

@@ -11,8 +11,8 @@
 }
 
 .card {
-  margin-top: 1rem;
-  background-color: #ececec;
+  margin: 1rem 0;
+  background-color: var(--primary-grey);
   padding: 2rem;
   border-radius: 4rem;
 
@@ -22,7 +22,14 @@
 }
 
 .h2 {
-  opacity: .7;
+  color: var(--secondary-black);
+}
+
+.pokeData .data {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
 }
 
 .name {
@@ -31,7 +38,8 @@
 
 .periodicNumber {
   margin-left: 1rem;
-  opacity: .7;
+  color: var(--subtitle-grey);
+  font-style: italic;
 }
 
 .label {
@@ -53,7 +61,7 @@
   padding: .1rem .2rem;
   border-radius: .4rem;
   margin-right: .5rem;
-  color: white;
+  color: var(--primary-white);
   text-shadow: 1px 1px 2px #00000070;
 }
 
@@ -61,70 +69,87 @@
   border-color: var(--normal);
   background-color: var(--normal);
 }
+
 .fire {
   border-color: var(--fire);
   background-color: var(--fire);
 }
+
 .water {
   border-color: var(--water);
   background-color: var(--water);
 }
+
 .electric {
   border-color: var(--electric);
   background-color: var(--electric);
 }
+
 .grass {
   border-color: var(--grass);
   background-color: var(--grass);
 }
+
 .ice {
   border-color: var(--ice);
   background-color: var(--ice);
 }
+
 .fighting {
   border-color: var(--fighting);
   background-color: var(--fighting);
 }
+
 .poison {
   border-color: var(--poison);
   background-color: var(--poison);
 }
+
 .ground {
   border-color: var(--ground);
   background-color: var(--ground);
 }
+
 .flying {
   border-color: var(--flying);
   background-color: var(--flying);
 }
+
 .psychic {
   border-color: var(--psychic);
   background-color: var(--psychic);
 }
+
 .bug {
   border-color: var(--bug);
   background-color: var(--bug);
 }
+
 .rock {
   border-color: var(--rock);
   background-color: var(--rock);
 }
+
 .ghost {
   border-color: var(--ghost);
   background-color: var(--ghost);
 }
+
 .dragon {
   border-color: var(--dragon);
   background-color: var(--dragon);
 }
+
 .dark {
   border-color: var(--dark);
   background-color: var(--dark);
 }
+
 .steel {
   border-color: var(--steel);
   background-color: var(--steel);
 }
+
 .fairy {
   border-color: var(--fairy);
   background-color: var(--fairy);
@@ -155,7 +180,7 @@
 }
 
 .image:hover {
-  border: 1px solid #d2d2d2;
+  border: 1px solid var(--border-grey);
 }
 
 .image:hover img {
@@ -202,6 +227,10 @@
     gap: 1rem;
     padding: 1rem;
     border-radius: 2rem;
+  }
+
+  .navigation > button {
+    padding: .8rem
   }
 
   .image {

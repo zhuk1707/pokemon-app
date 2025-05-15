@@ -9,7 +9,7 @@
   margin-top: 1rem;
   padding: 1rem 2rem 1rem 4rem;
   border-radius: 4rem;
-  background-color: #ececec;
+  background-color: var(--primary-grey);
 }
 
 .headerLogo {
@@ -31,8 +31,9 @@
 }
 
 .subtitle {
-  color: #4d4d4d;
+  color: var(--subtitle-grey);
   font-weight: 400;
+  font-style: italic;
 }
 
 .buttons {

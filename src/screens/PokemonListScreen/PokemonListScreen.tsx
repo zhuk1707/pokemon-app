@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from '../../store/store.ts'
 import { useEffect, useState } from 'react'
 import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
 import { Loader } from '../../components/Loader/Loader.tsx'
+import { Card } from '../../components/Card/Card.tsx'
 
 export const PokemonListScreen = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -22,10 +23,14 @@ export const PokemonListScreen = () => {
       <Header subtitle={'List'} />
 
       {loading
-        ? <Loader />
-        : <PokemonList list={pokemonList} />
+        ? (<Loader />)
+        : error
+          ? (
+            <Card>
+              <h1>{error}</h1>
+            </Card>)
+          : (<PokemonList list={pokemonList} />)
       }
-      {error && <p>{error}</p>}
 
       <Pagination
         pageCount={totalPages}
