@@ -1,3 +1,5 @@
+@import "src/colors.css";
+
 .card {
   background-color: var(--primary-grey);
   padding: 2rem;
@@ -55,6 +57,14 @@
 
 .details_alternative {
   text-align: right;
+}
+
+.type {
+  padding: .1rem .2rem;
+  border-radius: .4rem;
+  margin-right: .5rem;
+  color: var(--primary-white);
+  text-shadow: 1px 1px 2px #00000070;
 }
 
 .stats {

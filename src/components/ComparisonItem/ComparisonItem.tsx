@@ -2,12 +2,11 @@ import classes from './ComparisonItem.module.css'
 import { StatsItem, statsItemDisplayProps, statsItemProps } from '../StatsItem/StatsItem.tsx'
 import { Button } from '../Button/Button.tsx'
 import trashIcon from '../../assets/trash.svg'
-import {
-  PokemonDetailsTypes, PokemonType
-} from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 
 export interface ComparisonItemProps extends PokemonDetailsTypes, statsItemDisplayProps {
-  comparisonResult: number []
+  comparisonResult?: number []
 }
 
 export const ComparisonItem = (
@@ -19,46 +18,48 @@ export const ComparisonItem = (
     sprites,
     stats,
     types,
-    display,
+    display
 
   }: ComparisonItemProps) => {
   return (
     <div className={classes.card}>
-      <div className={
-        display === 'default'
-          ? classes.header
-          : classes.header_alternative
+      <div className={display === 'default'
+        ? classes.header : classes.header_alternative
       }>
         <div className={classes.image}>
           <img src={sprites.other['official-artwork'].front_default} alt="" />
         </div>
 
-        <div className={
-          display === 'default'
-            ? classes.details
-            : classes.details_alternative
+        <div className={display === 'default'
+          ? classes.details : classes.details_alternative
         }>
           <h1>
             <span className={classes.name}>{name}</span>
             <span className={classes.periodicNumber}>#{id}</span>
           </h1>
-          <div className={classes.detailsHeight}>Height {height}m</div>
-          <div className={classes.detailsWeight}>Weight {weight}kg</div>
-        </div>
 
-        <div className={classes.pokedataType}>
-          <span className={classes.label}>Type</span>
-          {types &&
-            types.map((el: PokemonType) => {
+          <div className={classes.pokeDataType}>
+            <span className={classes.label}>Type</span>
+
+            {types && types.map((el: PokemonType) => {
               return (
-                <span
-                  className={`${classes.type} ${classes[el.type.name]}`}
-                >
-                      {el.type.name.toUpperCase()}
-                    </span>
+                <span className={`${classes.type} ${classes[el.type.name]}`}>
+                  {el.type.name.toUpperCase()}
+                </span>
               )
             })
-          }
+            }
+          </div>
+
+          <div className={classes.detailsHeight}>
+            <span className={classes.label}>Height</span>
+            <span className={classes.number}>{(Number(height) / 10).toString()}</span>
+            <span className={classes.measure}>m</span>
+          </div>
+          <div className={classes.detailsWeight}>
+            <span className={classes.label}>Weight</span>
+            <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
+            <span className={classes.measure}>kg</span></div>
 
         </div>
       </div>
@@ -82,10 +83,11 @@ export const ComparisonItem = (
         })}
 
         <div className={classes.buttonWrapper}>
-        <Button
+          <Button
             title={'Delete From Comparison'}
             hiddenTittle
             icon={<img src={trashIcon} alt="" />}
+            onClick={() => toggleCompared}
             active={true}
           />
         </div>

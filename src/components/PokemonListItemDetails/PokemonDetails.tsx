@@ -17,7 +17,9 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
     stats,
     types,
     isFavorite,
-    toggleFavorite
+    toggleFavorite,
+    isInComparison,
+    toggleCompared
   }) => {
   return (
     <div className={classes.details}>
@@ -39,7 +41,10 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
               <Button
                 title={'Compare'}
                 icon={<img src={scalesIcon} alt="" />}
-                disabled
+                active={isInComparison}
+                onClick={() => {
+                  toggleCompared?.(id.toString())
+                }}
               />
             </div>
           </div>

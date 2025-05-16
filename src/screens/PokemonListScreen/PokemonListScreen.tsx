@@ -12,10 +12,11 @@ import { closeModal } from '../../features/comparedPokemonsSlice/comparedPokemon
 
 export const PokemonListScreen = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const { pokemonList, loading, error, totalPages } = useSelector((state: RootState) => state.pokemon)
   const {
-    isModalOpen,
-    errorMessage
+    pokemonList, loading, error, totalPages
+  } = useSelector((state: RootState) => state.pokemon)
+  const {
+    isModalOpen, errorMessage
   } = useSelector((state: RootState) => state.comparedPokemons)
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -23,10 +24,6 @@ export const PokemonListScreen = () => {
   useEffect(() => {
     dispatch(fetchPokemonList(currentPage))
   }, [dispatch, currentPage])
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     <>
