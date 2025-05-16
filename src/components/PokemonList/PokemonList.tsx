@@ -5,6 +5,7 @@ import capitalizeWord from '../../utils/capitalizeWord.ts'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
+import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 
 
 interface PokemonListProps {
@@ -14,6 +15,7 @@ interface PokemonListProps {
 export const PokemonList = ({ list = [] }: PokemonListProps) => {
   const dispatch = useDispatch<AppDispatch>()
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
+  const { comparedIds } = useSelector((state: RootState) => state.comparedPokemons)
 
   const getPeriodicNumberFromUrl = (url: string): number => {
     return Number(url
@@ -31,16 +33,19 @@ export const PokemonList = ({ list = [] }: PokemonListProps) => {
               const periodicNumber = getPeriodicNumberFromUrl(pokemon.url)
 
               return (
-                <>
-                  <PokemonListItem
-                    key={periodicNumber}
-                    pokemonName={capitalizeWord(pokemon.name)}
-                    periodicNumber={periodicNumber}
-                    isFavorite={favoriteIds.includes(periodicNumber.toString())}
-                    toggleFavorite={(periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))}
-                    isInComparison={false}
-                  />
-                </>
+                <PokemonListItem
+                  key={periodicNumber}
+                  pokemonName={capitalizeWord(pokemon.name)}
+                  periodicNumber={periodicNumber}
+                  isFavorite={favoriteIds.includes(periodicNumber.toString())}
+                  toggleFavorite={
+                    (periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))
+                  }
+                  isInComparison={comparedIds.includes(periodicNumber.toString())}
+                  toggleCompared={
+                    (periodicNumberStr: string) => dispatch(toggleCompared(periodicNumberStr))
+                  }
+                />
               )
             })}
         </div>

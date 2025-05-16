@@ -1,5 +1,5 @@
 import classes from './PokemonListItem.module.css'
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../Button/Button'
 import { useNavigate } from 'react-router'
 import heartIcon from '../../assets/heart.svg'
@@ -11,6 +11,7 @@ interface PokemonListItemProps {
   isFavorite?: boolean;
   toggleFavorite?: (string: string) => void;
   isInComparison?: boolean;
+  toggleCompared?: (string: string) => void;
 }
 
 export const PokemonListItem: React.FC<PokemonListItemProps> = (
@@ -19,21 +20,14 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
     periodicNumber = 0,
     isFavorite = false,
     toggleFavorite,
-    isInComparison = false
+    isInComparison = false,
+    toggleCompared,
   }) => {
-
-
-  const [isElementInComparison, setIsElementInComparison] = useState<boolean>(isInComparison)
 
   const navigate = useNavigate()
 
   const handlePokemonClick = (pokemonId: string) => {
     navigate(`/details/${pokemonId}`)
-  }
-
-  const handleComparisonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation()
-    setIsElementInComparison((prev) => !prev)
   }
 
   return (
@@ -59,10 +53,12 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
         />
         <Button
           icon={<img src={scalesIcon} alt="" />}
-          disabled
-          active={isElementInComparison}
+          active={isInComparison}
           round
-          onClick={() => handleComparisonClick}
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation()
+            toggleCompared?.(periodicNumber.toString())
+          }}
         />
       </div>
     </div>

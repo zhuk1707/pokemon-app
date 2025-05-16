@@ -36,6 +36,7 @@
 
 * {
   font-family: "Sora", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -45,6 +46,11 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
 .container {
