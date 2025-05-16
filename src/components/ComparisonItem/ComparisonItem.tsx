@@ -1,6 +1,6 @@
 import classes from './ComparisonItem.module.css'
 import { StatsItem, statsItemDisplayProps, statsItemProps } from '../StatsItem/StatsItem.tsx'
-import { Button } from '../button/Button.tsx'
+import { Button } from '../Button/Button.tsx'
 import trashIcon from '../../assets/trash.svg'
 import {
   PokemonDetailsTypes, PokemonType

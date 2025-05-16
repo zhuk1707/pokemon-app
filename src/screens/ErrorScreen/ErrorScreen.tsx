@@ -1,5 +1,5 @@
 import classes from './ErrorScreen.module.css'
-import { Button } from '../../components/button/Button.tsx'
+import { Button } from '../../components/Button/Button.tsx'
 import { useNavigate } from 'react-router'
 
 export const ErrorScreen = () => {

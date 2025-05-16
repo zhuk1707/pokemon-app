@@ -1,6 +1,6 @@
 import classes from './PokemonListItem.module.css'
 import React, { useState } from 'react'
-import { Button } from '../button/Button'
+import { Button } from '../Button/Button'
 import { useNavigate } from 'react-router'
 import heartIcon from '../../assets/heart.svg'
 import scalesIcon from '../../assets/scales.svg'

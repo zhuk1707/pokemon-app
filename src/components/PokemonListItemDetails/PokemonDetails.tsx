@@ -1,5 +1,7 @@
 import classes from './PokemonDetails.module.css'
-import { Button } from '../button/Button.tsx'
+import heartIcon from '../../assets/heart.svg'
+import scalesIcon from '../../assets/scales.svg'
+import { Button } from '../Button/Button.tsx'
 import React from 'react'
 import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
@@ -28,7 +30,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
             <div className={classes.controls}>
               <Button
                 title={'Favorite'}
-                icon={<img src="/src/assets/heart.svg" alt="" />}
+                icon={<img src={heartIcon} alt="" />}
                 active={isFavorite}
                 onClick={() => {
                   toggleFavorite?.(id.toString())
@@ -36,7 +38,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
               />
               <Button
                 title={'Compare'}
-                icon={<img src="/src/assets/scales.svg" alt="" />}
+                icon={<img src={scalesIcon} alt="" />}
                 disabled
               />
             </div>
