@@ -30,9 +30,6 @@ export const PokemonListItemDetailsScreen = () => {
     error: favError
   } = useSelector((state: RootState) => state.favoritePokemons)
 
-  const allPokemonsCount = useSelector((state:RootState) => state.pokemon.count)
-  console.log(allPokemonsCount ? allPokemonsCount : 'error')
-
   useEffect(() => {
     dispatch(fetchPokemonDetails(id as string))
   }, [dispatch, id])
