@@ -33,7 +33,6 @@ export const ComparisonItems = () => {
             ? (<Card><h1>Oops!</h1><h2>{error}</h2></Card>)
             : comparedIds.length
               ? (<div className={classes.comparison}>
-
                   {comparedPokemonsDetailsData?.map((element: ComparisonItemProps, index) => {
                     return (
                       <ComparisonItem
@@ -46,9 +45,15 @@ export const ComparisonItems = () => {
                         types={element.types}
                         display={index % 2 === 0 ? 'alternative' : 'default'}
                         isFavorite={favoriteIds.includes(element.id.toString())}
-                        toggleFavorite={() => dispatch(toggleFavorite)}
+                        toggleFavorite={
+                          (periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))
+                        }
+
                         isInComparison={comparedIds.includes(element.id.toString())}
-                        toggleCompared={() => dispatch(toggleCompared)}
+                        toggleCompared={
+                          (periodicNumberStr: string) => dispatch(toggleCompared(periodicNumberStr))
+
+                        }
                       />
                     )
                   })}

@@ -2,14 +2,17 @@ import classes from './ComparisonItem.module.css'
 import { StatsItem, statsItemDisplayProps, statsItemProps } from '../StatsItem/StatsItem.tsx'
 import { Button } from '../Button/Button.tsx'
 import trashIcon from '../../assets/trash.svg'
+import heartIcon from '../../assets/heart.svg'
+
 import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
-import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
+import capitalizeWord from '../../utils/capitalizeWord.ts'
+import { FC } from 'react'
 
 export interface ComparisonItemProps extends PokemonDetailsTypes, statsItemDisplayProps {
   comparisonResult?: number []
 }
 
-export const ComparisonItem = (
+export const ComparisonItem: FC<ComparisonItemProps> = (
   {
     id,
     name,
@@ -18,11 +21,15 @@ export const ComparisonItem = (
     sprites,
     stats,
     types,
-    display
-
-  }: ComparisonItemProps) => {
+    display,
+    isFavorite = false,
+    toggleFavorite,
+    isInComparison = false,
+    toggleCompared,
+  }) => {
   return (
     <div className={classes.card}>
+
       <div className={display === 'default'
         ? classes.header : classes.header_alternative
       }>
@@ -34,7 +41,7 @@ export const ComparisonItem = (
           ? classes.details : classes.details_alternative
         }>
           <h1>
-            <span className={classes.name}>{name}</span>
+            <span className={classes.name}>{capitalizeWord(name)}</span>
             <span className={classes.periodicNumber}>#{id}</span>
           </h1>
 
@@ -87,9 +94,18 @@ export const ComparisonItem = (
             title={'Delete From Comparison'}
             hiddenTittle
             icon={<img src={trashIcon} alt="" />}
-            onClick={() => toggleCompared}
-            active={true}
+            active={isInComparison}
+            onClick={() => toggleCompared?.(id.toString())}
           />
+          <Button
+            title={'Favorite'}
+            hiddenTittle
+            icon={<img src={heartIcon} alt="" />}
+            active={isFavorite}
+            onClick={() => toggleFavorite?.(id.toString())}
+
+          />
+
         </div>
 
       </div>

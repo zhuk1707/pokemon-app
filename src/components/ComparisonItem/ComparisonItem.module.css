@@ -1,19 +1,16 @@
-@import "src/colors.css";
-
-.card {
-  background-color: var(--primary-grey);
-  padding: 2rem;
-  border-radius: 3rem;
-}
+@import "../../pokemon-type-colors.css";
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: 2rem;
 }
 
+/* Альтернативное расположение */
 .header_alternative {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row-reverse;
   gap: 2rem;
 }
@@ -33,7 +30,7 @@
 .image img {
   width: 100%;
   height: auto;
-  /*object-fit: cover;*/
+  object-fit: cover;
 }
 
 .buttonWrapper {
@@ -48,7 +45,14 @@
 }
 
 .periodicNumber {
-  opacity: .7;
+  color: var(--dark-grey);
+  font-style: italic;
+}
+
+.details, .details_alternative {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
 }
 
 .details {
@@ -59,12 +63,26 @@
   text-align: right;
 }
 
+.pokeDataType {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
 .type {
   padding: .1rem .2rem;
   border-radius: .4rem;
-  margin-right: .5rem;
   color: var(--primary-white);
   text-shadow: 1px 1px 2px #00000070;
+}
+
+.detailsWeight, .detailsHeight {
+  display: flex;
+  gap: .4rem;
+}
+
+.details_alternative .detailsWeight, .details_alternative .detailsHeight {
+  justify-content: end;
 }
 
 .stats {
@@ -74,49 +92,60 @@
   gap: 1rem;
 }
 
-@media (max-width: 800px) {
-  .card {
-    padding: 1rem;
-    border-radius: 2rem;
+/* Адаптивность для планшетов */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
   }
 
   .image {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .header_alternative, .header {
-    gap: 1rem;
+    width: 6rem;
+    height: 6rem;
+    padding: 0.5rem;
   }
 
   .name {
     font-size: 1.5rem;
   }
 
-  .details, .details_alternative {
-    font-size: .8rem;
+  .stats {
+    gap: 0.5rem;
   }
 }
 
-@media (max-width: 425px) {
+/* Адаптивность для небольших телефонов */
+@media (max-width: 480px) {
+  .image {
+    width: 5rem;
+    height: 5rem;
+  }
+
   .name {
     font-size: 1.2rem;
-    margin-bottom: 0;
   }
 
   .stats {
-    margin-top: 1rem;
-    gap: .5rem;
-  }
-
-  .buttonWrapper {
-    margin-top: 0;
+    margin-top: 0.5rem;
   }
 }
 
-@media (max-width: 320px) {
+/* Оптимизация для больших экранов */
+@media (min-width: 1024px) {
+  .header {
+    flex-wrap: nowrap;
+    gap: 3rem;
+  }
+
   .image {
-    width: 2rem;
-    height: 2rem;
+    width: 10rem;
+    height: 10rem;
+    padding: 1.5rem;
+  }
+
+  .name {
+    font-size: 2.5rem;
   }
 }

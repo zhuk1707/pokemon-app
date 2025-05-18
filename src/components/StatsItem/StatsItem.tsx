@@ -4,10 +4,11 @@ import { Stat } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 
 export interface statsItemDisplayProps{
   display?: 'default' | 'alternative';
-  comparisonFlag?: number
 }
 
-export interface statsItemProps extends Stat, statsItemDisplayProps {}
+export interface statsItemProps extends Stat, statsItemDisplayProps {
+  comparisonFlag?: number
+}
 
 export const StatsItem: React.FC<statsItemProps> = (
   {
