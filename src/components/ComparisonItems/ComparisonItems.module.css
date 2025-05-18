@@ -4,17 +4,22 @@
 
 .comparison {
   background: var(--primary-grey);
-  padding: 2rem;
-  border-radius: 3rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  padding: 2rem;
+  border-radius: 3rem;
 }
 
 @media (max-width: 768px) {
-
+  .comparison {
+    padding: 1rem;
+    gap: .5rem;
+  }
 }
 
 @media (max-width: 480px) {
-
+  .comparison {
+    border-radius: 2rem;
+  }
 }

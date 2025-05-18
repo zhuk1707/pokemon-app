@@ -2,7 +2,7 @@ import classes from './StatsItem.module.css'
 import React from 'react'
 import { Stat } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 
-export interface statsItemDisplayProps{
+export interface statsItemDisplayProps {
   display?: 'default' | 'alternative';
 }
 
@@ -30,15 +30,12 @@ export const StatsItem: React.FC<statsItemProps> = (
       <div className={classes.statsLabel}>
         {stat.name.replace('-', ' ').toUpperCase()}
       </div>
-      <div className={
-        `${classes.statsValue} ${
+      <div
+        className={`${classes.statsValue} ${
           comparisonFlag === 1
-            ? classes.color_green
-            : comparisonFlag === 0
-              ? ''
-              : classes.color_red
-        }`
-      }>
+            ? classes.color_green : comparisonFlag === 0
+              ? '' : classes.color_red}`}
+      >
         {base_stat}
       </div>
     </div>

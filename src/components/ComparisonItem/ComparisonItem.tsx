@@ -25,7 +25,7 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
     isFavorite = false,
     toggleFavorite,
     isInComparison = false,
-    toggleCompared,
+    toggleCompared
   }) => {
   return (
     <div className={classes.card}>
@@ -40,33 +40,41 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
         <div className={display === 'default'
           ? classes.details : classes.details_alternative
         }>
-          <h1>
+          <div className={classes.nameAndPeriodicNumber}>
             <span className={classes.name}>{capitalizeWord(name)}</span>
             <span className={classes.periodicNumber}>#{id}</span>
-          </h1>
+          </div>
 
           <div className={classes.pokeDataType}>
-            <span className={classes.label}>Type</span>
+            <div className={classes.label}>Type</div>
 
-            {types && types.map((el: PokemonType) => {
-              return (
-                <span className={`${classes.type} ${classes[el.type.name]}`}>
+            <div className={classes.allTypes}>
+              {types && types.map((el: PokemonType) => {
+                return (
+                  <span className={`${classes.type} ${classes[el.type.name]}`}>
                   {el.type.name.toUpperCase()}
-                </span>
-              )
-            })
-            }
+                </span>)
+              })}
+            </div>
           </div>
 
           <div className={classes.detailsHeight}>
-            <span className={classes.label}>Height</span>
-            <span className={classes.number}>{(Number(height) / 10).toString()}</span>
-            <span className={classes.measure}>m</span>
+            <div className={classes.label}>Height</div>
+            <div>
+              <span className={classes.number}>
+                {(Number(height) / 10).toString()}
+              </span>
+              <span className={classes.measure}>m</span>
+            </div>
           </div>
           <div className={classes.detailsWeight}>
-            <span className={classes.label}>Weight</span>
-            <span className={classes.number}>{(Number(weight) / 10).toString()}</span>
-            <span className={classes.measure}>kg</span></div>
+            <div className={classes.label}>Weight</div>
+            <div>
+              <span className={classes.number}>
+                {(Number(weight) / 10).toString()}
+              </span>
+              <span className={classes.measure}>kg</span></div>
+          </div>
 
         </div>
       </div>
@@ -91,21 +99,18 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
 
         <div className={classes.buttonWrapper}>
           <Button
-            title={'Delete From Comparison'}
-            hiddenTittle
+            title={'Favorite'}
+            icon={<img src={heartIcon} alt="" />}
+            active={isFavorite}
+            onClick={() => toggleFavorite?.(id.toString())}
+          />
+
+          <Button
+            title={'Delete'}
             icon={<img src={trashIcon} alt="" />}
             active={isInComparison}
             onClick={() => toggleCompared?.(id.toString())}
           />
-          <Button
-            title={'Favorite'}
-            hiddenTittle
-            icon={<img src={heartIcon} alt="" />}
-            active={isFavorite}
-            onClick={() => toggleFavorite?.(id.toString())}
-
-          />
-
         </div>
 
       </div>
