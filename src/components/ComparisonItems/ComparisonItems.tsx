@@ -15,6 +15,19 @@ export const ComparisonItems = () => {
     comparedIds, comparedPokemonsDetailsData, loading, error
   } = useSelector((state: RootState) => state.comparedPokemons)
 
+  let comparisonResult: number[] = []
+
+  if (comparedPokemonsDetailsData?.length === 2) {
+    comparisonResult = comparedPokemonsDetailsData[0].stats.map((el, index) => {
+      const opponentStat = comparedPokemonsDetailsData[1].stats[index].base_stat
+
+      return el.base_stat > opponentStat ? 1
+        : el.base_stat === opponentStat ? 0
+          : -1
+    })
+  }
+
+
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
 
 
@@ -43,6 +56,9 @@ export const ComparisonItems = () => {
                         sprites={element.sprites}
                         stats={element.stats}
                         types={element.types}
+                        comparisonResult={index % 2 === 0
+                          ? comparisonResult
+                          : comparisonResult.map(el => el * -1)}
                         display={index % 2 === 0 ? 'alternative' : 'default'}
                         isFavorite={favoriteIds.includes(element.id.toString())}
                         toggleFavorite={

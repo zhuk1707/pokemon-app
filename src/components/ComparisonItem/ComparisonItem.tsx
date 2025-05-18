@@ -22,6 +22,7 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
     stats,
     types,
     display,
+    comparisonResult,
     isFavorite = false,
     toggleFavorite,
     isInComparison = false,
@@ -92,7 +93,7 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
               display={display === 'default'
                 ? 'default'
                 : 'alternative'}
-
+              comparisonFlag={comparisonResult?.[index]}
             />
           )
         })}
