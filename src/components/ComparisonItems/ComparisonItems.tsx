@@ -7,6 +7,7 @@ import { Card } from '../Card/Card.tsx'
 import { fetchComparedPokemons, toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 import { ComparisonItem, ComparisonItemProps } from '../ComparisonItem/ComparisonItem.tsx'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
+import { AnimatePresence } from 'motion/react'
 
 
 export const ComparisonItems = () => {
@@ -36,53 +37,55 @@ export const ComparisonItems = () => {
     if (favoriteIds.length) dispatch(fetchComparedPokemons(comparedIds))
   }, [dispatch, comparedIds, favoriteIds])
 
+
   return (
     <section className={classes.comparisonWrapper}>
 
-      {loading
-        ? (<Loader />)
-        : error
-          ? (<Card><h1>Oops!</h1><h2>{error}</h2></Card>)
-          : comparedIds.length
+      <AnimatePresence>
+        {loading
+          ? (<Loader />)
+          : error
+            ? (<Card><h1>Oops!</h1>{error ? <h2>{error}</h2> : null}</Card>)
+            : comparedIds.length
 
-            ? (<div className="container">
-                <div className={classes.comparison}>
-                  {comparedPokemonsDetailsData?.map((element: ComparisonItemProps, index) => {
-                    return (
-                      <ComparisonItem
-                        id={element.id}
-                        name={element.name}
-                        height={element.height}
-                        weight={element.weight}
-                        sprites={element.sprites}
-                        stats={element.stats}
-                        types={element.types}
-                        comparisonResult={index % 2 === 0
-                          ? comparisonResult
-                          : comparisonResult.map(el => el * -1)}
-                        display={index % 2 === 0 ? 'alternative' : 'default'}
-                        isFavorite={favoriteIds.includes(element.id.toString())}
-                        toggleFavorite={
-                          (periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))
-                        }
+              ? (<div className="container">
+                  <div className={classes.comparison}>
+                    {comparedPokemonsDetailsData?.map((element: ComparisonItemProps, index) => {
+                      return (
+                        <ComparisonItem
+                          id={element.id}
+                          name={element.name}
+                          height={element.height}
+                          weight={element.weight}
+                          sprites={element.sprites}
+                          stats={element.stats}
+                          types={element.types}
+                          comparisonResult={index % 2 === 0
+                            ? comparisonResult
+                            : comparisonResult.map(el => el * -1)}
+                          display={index % 2 === 0 ? 'alternative' : 'default'}
+                          isFavorite={favoriteIds.includes(element.id.toString())}
+                          toggleFavorite={
+                            (periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))
+                          }
 
-                        isInComparison={comparedIds.includes(element.id.toString())}
-                        toggleCompared={
-                          (periodicNumberStr: string) => dispatch(toggleCompared(periodicNumberStr))
-
-                        }
-                      />
-                    )
-                  })}
+                          isInComparison={comparedIds.includes(element.id.toString())}
+                          toggleCompared={
+                            (periodicNumberStr: string) => dispatch(toggleCompared(periodicNumberStr))
+                          }
+                        />
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
-            )
-            : (<Card>
-                <h1>No Pokémons in comparison</h1>
-              </Card>
-            )
-      }
+              )
+              : (<Card>
+                  <h1>No Pokémons in comparison</h1>
+                </Card>
+              )
 
+        }
+      </AnimatePresence>
     </section>
   )
 }

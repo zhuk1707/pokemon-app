@@ -1,6 +1,7 @@
 import classes from './StatsItem.module.css'
 import React from 'react'
 import { Stat } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import { motion } from 'motion/react'
 
 export interface statsItemDisplayProps {
   display?: 'default' | 'alternative';
@@ -20,13 +21,16 @@ export const StatsItem: React.FC<statsItemProps> = (
 
 
   return (
-    <div className={
-      `${classes.statsItem} ${
-        display === 'default'
-          ? classes.statsItem_default
-          : classes.statsItem_alternative}
-      `
-    }>
+    <motion.div
+      className={
+        `${classes.statsItem} ${
+          display === 'default'
+            ? classes.statsItem_default
+            : classes.statsItem_alternative}`
+      }
+      whileHover={{scale: 1.05}}
+      transition={{ duration: .2 }}
+    >
       <div className={classes.statsLabel}>
         {stat.name.replace('-', ' ').toUpperCase()}
       </div>
@@ -38,6 +42,6 @@ export const StatsItem: React.FC<statsItemProps> = (
       >
         {base_stat}
       </div>
-    </div>
+    </motion.div>
   )
 }

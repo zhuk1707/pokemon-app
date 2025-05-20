@@ -4,6 +4,7 @@ import { Button } from '../Button/Button'
 import { useNavigate } from 'react-router'
 import heartIcon from '../../assets/heart.svg'
 import scalesIcon from '../../assets/scales.svg'
+import { motion } from 'motion/react'
 
 interface PokemonListItemProps {
   pokemonName?: string;
@@ -31,10 +32,14 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
   }
 
   return (
-    <div
+    <motion.div
       key={periodicNumber}
       className={classes.listItem}
       onClick={() => handlePokemonClick(periodicNumber.toString())}
+      whileTap={{borderColor: 'var(--primary-red)'}}
+      initial={{ opacity: 0, y: 150 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0 }}
     >
       <div className={classes.desc}>
         <div className={classes.name}>{pokemonName}</div>
@@ -61,6 +66,6 @@ export const PokemonListItem: React.FC<PokemonListItemProps> = (
           }}
         />
       </div>
-    </div>
+    </motion.div>
   )
 }

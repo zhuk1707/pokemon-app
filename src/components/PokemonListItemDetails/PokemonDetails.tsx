@@ -5,6 +5,7 @@ import { Button } from '../Button/Button.tsx'
 import React from 'react'
 import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 import { StatsItem, statsItemProps } from '../StatsItem/StatsItem.tsx'
+import { motion } from 'motion/react'
 
 
 export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
@@ -24,7 +25,12 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
   return (
     <div className={classes.details}>
       <div className="container">
-        <div className={classes.card}>
+        <motion.div
+          className={classes.card}
+          initial={{ opacity: 0, y: 150 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .2 }}
+        >
           <div className={classes.image_n_controls}>
             <div className={classes.image}>
               <img src={sprites.other['official-artwork'].front_default} alt="" />
@@ -101,7 +107,7 @@ export const PokemonDetails: React.FC<PokemonDetailsTypes> = (
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

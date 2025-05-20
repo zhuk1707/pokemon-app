@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
+import { motion } from 'motion/react'
 
 
 interface PokemonListProps {
@@ -26,7 +27,12 @@ export const PokemonList = ({ list = [] }: PokemonListProps) => {
   return (
     <div className={classes.listOuter}>
       <div className="container">
-        <div className={classes.list}>
+        <motion.div
+          className={classes.list}
+          initial={{ opacity: 0, y: -150 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .2 }}
+        >
 
           {list.length >= 1 && list
             .map((pokemon) => {
@@ -48,7 +54,7 @@ export const PokemonList = ({ list = [] }: PokemonListProps) => {
                 />
               )
             })}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

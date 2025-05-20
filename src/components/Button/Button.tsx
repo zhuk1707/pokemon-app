@@ -34,8 +34,8 @@ export const Button: React.FC<ButtonProps> = (
       className={className}
       onClick={!disabled ? onClick : undefined}
       whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: .99 }}
-      transition={{ duration: .1}}
+      whileTap={{ scale: .98 }}
+      transition={{ duration: 0}}
     >
       {icon && <span className={classes.buttonIcon}>{icon}</span>}
       {title &&

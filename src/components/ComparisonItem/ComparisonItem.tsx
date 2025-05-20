@@ -7,6 +7,7 @@ import heartIcon from '../../assets/heart.svg'
 import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
 import capitalizeWord from '../../utils/capitalizeWord.ts'
 import { FC } from 'react'
+import { motion } from 'motion/react'
 
 export interface ComparisonItemProps extends PokemonDetailsTypes, statsItemDisplayProps {
   comparisonResult?: number []
@@ -31,9 +32,12 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
   return (
     <div className={classes.card}>
 
-      <div className={display === 'default'
-        ? classes.header : classes.header_alternative
-      }>
+      <motion.div
+        className={display === 'default' ? classes.header : classes.header_alternative}
+        initial={{ opacity: 0, y: 150 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: .2 }}
+      >
         <div className={classes.image}>
           <img src={sprites.other['official-artwork'].front_default} alt="" />
         </div>
@@ -78,7 +82,7 @@ export const ComparisonItem: FC<ComparisonItemProps> = (
           </div>
 
         </div>
-      </div>
+      </motion.div>
 
 
       <div className={classes.stats}>

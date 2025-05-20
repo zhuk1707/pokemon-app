@@ -75,6 +75,7 @@ export const PokemonListItemDetailsScreen = () => {
         </div>
       </div>
 
+
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
           <h1>Oops!</h1>
