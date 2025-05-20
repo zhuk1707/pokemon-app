@@ -1,4 +1,4 @@
-import { Button } from '../button/Button.tsx'
+import { Button } from '../Button/Button.tsx'
 import classes from './Header.module.css'
 import favoriteIcon from '../../assets/heart.svg'
 import comparisonIcon from '../../assets/scales.svg'

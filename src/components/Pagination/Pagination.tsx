@@ -1,4 +1,4 @@
-import { Button } from '../button/Button.tsx'
+import { Button } from '../Button/Button.tsx'
 import classes from './Pagination.module.css'
 import getPages from '../../utils/getPages.ts'
 import arrowLeftIcon from '../../assets/arrow-left.svg'

@@ -1,16 +1,18 @@
 import classes from './ComparisonItem.module.css'
 import { StatsItem, statsItemDisplayProps, statsItemProps } from '../StatsItem/StatsItem.tsx'
-import { Button } from '../button/Button.tsx'
+import { Button } from '../Button/Button.tsx'
 import trashIcon from '../../assets/trash.svg'
-import {
-  PokemonDetailsTypes, PokemonType
-} from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import heartIcon from '../../assets/heart.svg'
+
+import { PokemonDetailsTypes, PokemonType } from '../../features/pokemonDetails/pokemonDetailsSlice.ts'
+import capitalizeWord from '../../utils/capitalizeWord.ts'
+import { FC } from 'react'
 
 export interface ComparisonItemProps extends PokemonDetailsTypes, statsItemDisplayProps {
-  comparisonResult: number []
+  comparisonResult?: number []
 }
 
-export const ComparisonItem = (
+export const ComparisonItem: FC<ComparisonItemProps> = (
   {
     id,
     name,
@@ -20,45 +22,60 @@ export const ComparisonItem = (
     stats,
     types,
     display,
-
-  }: ComparisonItemProps) => {
+    comparisonResult,
+    isFavorite = false,
+    toggleFavorite,
+    isInComparison = false,
+    toggleCompared
+  }) => {
   return (
     <div className={classes.card}>
-      <div className={
-        display === 'default'
-          ? classes.header
-          : classes.header_alternative
+
+      <div className={display === 'default'
+        ? classes.header : classes.header_alternative
       }>
         <div className={classes.image}>
           <img src={sprites.other['official-artwork'].front_default} alt="" />
         </div>
 
-        <div className={
-          display === 'default'
-            ? classes.details
-            : classes.details_alternative
+        <div className={display === 'default'
+          ? classes.details : classes.details_alternative
         }>
-          <h1>
-            <span className={classes.name}>{name}</span>
+          <div className={classes.nameAndPeriodicNumber}>
+            <span className={classes.name}>{capitalizeWord(name)}</span>
             <span className={classes.periodicNumber}>#{id}</span>
-          </h1>
-          <div className={classes.detailsHeight}>Height {height}m</div>
-          <div className={classes.detailsWeight}>Weight {weight}kg</div>
-        </div>
+          </div>
 
-        <div className={classes.pokedataType}>
-          <span className={classes.label}>Type</span>
-          {types &&
-            types.map((el: PokemonType) => {
-              return (
-                <span
-                  className={`${classes.type} ${classes[el.type.name]}`}
-                >
-                      {el.type.name.toUpperCase()}
-                    </span>
-              )
-            })
-          }
+          <div className={classes.pokeDataType}>
+            <div className={classes.label}>Type</div>
+
+            <div className={classes.allTypes}>
+              {types && types.map((el: PokemonType) => {
+                return (
+                  <span className={`${classes.type} ${classes[el.type.name]}`}>
+                  {el.type.name.toUpperCase()}
+                </span>)
+              })}
+            </div>
+          </div>
+
+          <div className={classes.detailsHeight}>
+            <div className={classes.label}>Height</div>
+            <div>
+              <span className={classes.number}>
+                {(Number(height) / 10).toString()}
+              </span>
+              <span className={classes.measure}>m</span>
+            </div>
+          </div>
+          <div className={classes.detailsWeight}>
+            <div className={classes.label}>Weight</div>
+            <div>
+              <span className={classes.number}>
+                {(Number(weight) / 10).toString()}
+              </span>
+              <span className={classes.measure}>kg</span></div>
+          </div>
 
         </div>
       </div>
@@ -76,17 +93,24 @@ export const ComparisonItem = (
               display={display === 'default'
                 ? 'default'
                 : 'alternative'}
-
+              comparisonFlag={comparisonResult?.[index]}
             />
           )
         })}
 
         <div className={classes.buttonWrapper}>
-        <Button
-            title={'Delete From Comparison'}
-            hiddenTittle
+          <Button
+            title={'Favorite'}
+            icon={<img src={heartIcon} alt="" />}
+            active={isFavorite}
+            onClick={() => toggleFavorite?.(id.toString())}
+          />
+
+          <Button
+            title={'Delete'}
             icon={<img src={trashIcon} alt="" />}
-            active={true}
+            active={isInComparison}
+            onClick={() => toggleCompared?.(id.toString())}
           />
         </div>
 

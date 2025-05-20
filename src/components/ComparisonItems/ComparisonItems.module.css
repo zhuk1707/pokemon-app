@@ -3,24 +3,23 @@
 }
 
 .comparison {
+  background: var(--primary-grey);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  padding: 2rem;
+  border-radius: 3rem;
 }
 
 @media (max-width: 768px) {
   .comparison {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    padding: 1rem;
+    gap: .5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .comparisonWrapper {
-    margin: 0.5rem 0 1rem;
-  }
-
   .comparison {
-    gap: 0.3rem;
+    border-radius: 2rem;
   }
 }

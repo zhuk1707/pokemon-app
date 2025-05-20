@@ -7,20 +7,34 @@ import { useEffect, useState } from 'react'
 import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
 import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
+import Modal from '../../components/Modal/Modal.tsx'
+import { closeModal } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 
 export const PokemonListScreen = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const { pokemonList, loading, error, totalPages } = useSelector((state: RootState) => state.pokemon)
+  const {
+    pokemonList, loading, error, totalPages
+  } = useSelector((state: RootState) => state.pokemon)
+  const {
+    isModalOpen, errorMessage
+  } = useSelector((state: RootState) => state.comparedPokemons)
+
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     dispatch(fetchPokemonList(currentPage))
   }, [dispatch, currentPage])
 
-
   return (
     <>
       <Header subtitle={'List'} />
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
+          <h1>Oops!</h1>
+          <h2>{errorMessage}</h2>
+        </Modal>
+      )}
 
       {loading
         ? (<Loader />)

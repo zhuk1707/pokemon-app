@@ -15,7 +15,6 @@ const initialState: FavoritePokemonsSlice = {
   error: null,
 };
 
-// Асинхронный thunk с обработкой ошибок
 export const fetchFavoritePokemons = createAsyncThunk<
   Pokemon[],
   string[],

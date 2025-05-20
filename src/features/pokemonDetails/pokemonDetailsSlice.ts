@@ -29,8 +29,10 @@ export interface PokemonDetailsTypes {
   sprites: PokemonSprites;
   stats: Stat[];
   types: PokemonType[];
-  isFavorite?: boolean;
-  toggleFavorite?: (string: string) => void;
+  isFavorite: boolean;
+  toggleFavorite: (string: string) => void;
+  isInComparison: boolean;
+  toggleCompared: (string: string) => void;
 }
 
 export interface PokemonDetailsState {
@@ -61,7 +63,7 @@ export const fetchPokemonDetails = createAsyncThunk<
 
       return await response.json()
     } catch (error) {
-      return rejectWithValue('Failed to load Pokémon details')
+      return rejectWithValue(error + 'Failed to load Pokémon details')
     }
   }
 )

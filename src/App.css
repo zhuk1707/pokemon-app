@@ -36,6 +36,7 @@
 
 * {
   font-family: "Sora", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -45,6 +46,11 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 
 .container {
@@ -57,16 +63,28 @@ button {
   h1 {
     font-size: 1.5rem;
   }
+
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 425px) {
   h1 {
     font-size: 1.2rem;
   }
+
+  h2 {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 320px) {
   h1 {
     font-size: 1rem;
+  }
+
+  h2 {
+    font-size: .8rem;
   }
 }

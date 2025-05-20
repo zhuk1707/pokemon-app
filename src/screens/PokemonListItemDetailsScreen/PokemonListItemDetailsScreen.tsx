@@ -7,11 +7,17 @@ import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
 import { PokemonDetails } from '../../components/PokemonListItemDetails/PokemonDetails.tsx'
 import capitalizeWord from '../../utils/capitalizeWord.ts'
-import { Button } from '../../components/button/Button.tsx'
+import { Button } from '../../components/Button/Button.tsx'
 import arrowLeftIcon from '../../assets/arrow-left.svg'
 import arrowRightIcon from '../../assets/arrow-right.svg'
 import classes from '../../components/PokemonListItemDetails/PokemonDetails.module.css'
 import { fetchFavoritePokemons, toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
+import {
+  closeModal,
+  fetchComparedPokemons,
+  toggleCompared
+} from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
+import Modal from '../../components/Modal/Modal.tsx'
 
 
 export const PokemonListItemDetailsScreen = () => {
@@ -19,27 +25,22 @@ export const PokemonListItemDetailsScreen = () => {
 
   const dispatch = useDispatch<AppDispatch>()
   const {
-    pokemonDetailsData,
-    loading,
-    error
+    pokemonDetailsData, loading, error
   } = useSelector((state: RootState) => state.pokemonDetails)
 
   const {
-    favoriteIds,
-    loading: favLoading,
-    error: favError
+    favoriteIds, loading: favLoading, error: favError
   } = useSelector((state: RootState) => state.favoritePokemons)
 
-  const allPokemonsCount = useSelector((state:RootState) => state.pokemon.count)
-  console.log(allPokemonsCount ? allPokemonsCount : 'error')
+  const {
+    comparedIds, loading: compLoading, error: compError, isModalOpen, errorMessage
+  } = useSelector((state: RootState) => state.comparedPokemons)
 
   useEffect(() => {
-    dispatch(fetchPokemonDetails(id as string))
-  }, [dispatch, id])
-
-  useEffect(() => {
-    dispatch(fetchFavoritePokemons(favoriteIds))
-  }, [dispatch, favoriteIds])
+    if (id) dispatch(fetchPokemonDetails(id as string))
+    if (favoriteIds.length) dispatch(fetchFavoritePokemons(favoriteIds))
+    if (comparedIds.length) dispatch(fetchComparedPokemons(comparedIds))
+  }, [dispatch, id, favoriteIds, comparedIds])
 
   const periodicNumber = pokemonDetailsData && pokemonDetailsData.id
 
@@ -74,12 +75,19 @@ export const PokemonListItemDetailsScreen = () => {
         </div>
       </div>
 
-      {(loading || favLoading) ? (
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
+          <h1>Oops!</h1>
+          <h2>{errorMessage}</h2>
+        </Modal>
+      )}
+
+      {(loading || favLoading || compLoading) ? (
         <Loader />
-      ) : (error || favError) ? (
+      ) : (error || favError || compError) ? (
         <Card>
           <h1>Oops!</h1>
-          <h2>{error ?? favError}</h2>
+          <h2>{error ?? favError ?? compError}</h2>
         </Card>
       ) : pokemonDetailsData && (
         <PokemonDetails
@@ -97,8 +105,13 @@ export const PokemonListItemDetailsScreen = () => {
           stats={pokemonDetailsData.stats}
           types={pokemonDetailsData.types}
           isFavorite={favoriteIds.includes(pokemonDetailsData.id.toString())}
-
-          toggleFavorite={(periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))}
+          toggleFavorite={
+            (periodicNumberStr: string) => dispatch(toggleFavorite(periodicNumberStr))
+          }
+          isInComparison={comparedIds.includes(pokemonDetailsData.id.toString())}
+          toggleCompared={
+            (periodicNumberStr: string) => dispatch(toggleCompared(periodicNumberStr))
+          }
         />
       )
       }
