@@ -5,8 +5,12 @@
   background-color: #ececec;
 }
 
+.card h1 {
+  font-size: 2rem;
+  color: var(--secondary-black);
+}
+
 .card h2 {
-  opacity: .7;
 }
 
 @media (max-width: 1024px) {

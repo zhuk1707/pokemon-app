@@ -38,14 +38,15 @@ export const ComparisonItems = () => {
 
   return (
     <section className={classes.comparisonWrapper}>
-      <div className="container">
 
-        {loading
-          ? (<Loader />)
-          : error
-            ? (<Card><h1>Oops!</h1><h2>{error}</h2></Card>)
-            : comparedIds.length
-              ? (<div className={classes.comparison}>
+      {loading
+        ? (<Loader />)
+        : error
+          ? (<Card><h1>Oops!</h1><h2>{error}</h2></Card>)
+          : comparedIds.length
+
+            ? (<div className="container">
+                <div className={classes.comparison}>
                   {comparedPokemonsDetailsData?.map((element: ComparisonItemProps, index) => {
                     return (
                       <ComparisonItem
@@ -74,14 +75,14 @@ export const ComparisonItems = () => {
                     )
                   })}
                 </div>
-              )
-              : (<Card>
-                  <h1>No Pokémons in comparison</h1>
-                </Card>
-              )
-        }
+              </div>
+            )
+            : (<Card>
+                <h1>No Pokémons in comparison</h1>
+              </Card>
+            )
+      }
 
-      </div>
     </section>
   )
 }

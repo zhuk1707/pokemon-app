@@ -9,6 +9,7 @@ import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
 import Modal from '../../components/Modal/Modal.tsx'
 import { closeModal } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
+import { AnimatePresence } from 'motion/react'
 
 export const PokemonListScreen = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -29,12 +30,14 @@ export const PokemonListScreen = () => {
     <>
       <Header subtitle={'List'} />
 
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
-          <h1>Oops!</h1>
-          <h2>{errorMessage}</h2>
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isModalOpen && (
+          <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>
+            <h1>Oops!</h1>
+            <h2>{errorMessage}</h2>
+          </Modal>
+        )}
+      </AnimatePresence>
 
       {loading
         ? (<Loader />)
