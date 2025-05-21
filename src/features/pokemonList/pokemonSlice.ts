@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export interface Pokemon {
   name: string;
@@ -70,3 +71,15 @@ const pokemonSlice = createSlice({
 
 // export const { } = pokemonSlice.actions
 export default pokemonSlice.reducer
+
+export const pokemonListApi = createApi({
+  reducerPath: 'pokemonApi/fetchPokemonList',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+  endpoints: (build) => ({
+    getPokemonList: build.query({
+      query: (offset) => `pokemon?limit=20&offset=${offset}`
+    })
+  })
+})
+
+export const { useGetPokemonListQuery } = pokemonListApi
