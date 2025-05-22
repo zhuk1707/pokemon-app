@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Pokemon } from '../pokemonList/pokemonSlice.ts';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { Pokemon } from '../pokemonList/pokemonSlice.ts'
 
 interface FavoritePokemonsSlice {
   favoriteIds: string[];
@@ -12,8 +12,8 @@ const initialState: FavoritePokemonsSlice = {
   favoriteIds: [],
   favoritePokemonsList: [],
   loading: false,
-  error: null,
-};
+  error: null
+}
 
 export const fetchFavoritePokemons = createAsyncThunk<
   Pokemon[],
@@ -26,57 +26,57 @@ export const fetchFavoritePokemons = createAsyncThunk<
       const responses = await Promise.all(
         favoritePokemonIds.map(async (pokemonId) => {
           try {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
 
             if (!response.ok) {
-              throw new Error(`Failed to fetch Pokémon with ID: ${pokemonId}`);
+              throw new Error(`Failed to fetch Pokémon with ID: ${pokemonId}`)
             }
 
-            return await response.json();
+            return await response.json()
           } catch (error) {
-            return rejectWithValue(`Failed to load Pokémon details for ID: ${pokemonId}`);
+            return rejectWithValue(`Failed to load Pokémon details for ID: ${pokemonId}`)
           }
         })
-      );
+      )
       return responses.map(({ name, id }): Pokemon => ({
         name,
-        url: `https://pokeapi.co/api/v2/pokemon/${id}`,
-      }));
+        url: `https://pokeapi.co/api/v2/pokemon/${id}`
+      }))
     } catch (error) {
-      return rejectWithValue('Failed to fetch Pokémon details');
+      return rejectWithValue('Failed to fetch Pokémon details')
     }
   }
-);
+)
 
 const favoritePokemonsSlice = createSlice({
   name: 'favoritePokemons',
   initialState,
   reducers: {
     toggleFavorite: (state, action) => {
-      const pokemonId = action.payload;
+      const pokemonId: string = action.payload
       if (state.favoriteIds.includes(pokemonId)) {
-        state.favoriteIds = state.favoriteIds.filter((id) => id !== pokemonId);
+        state.favoriteIds = state.favoriteIds.filter((id) => id !== pokemonId)
       } else {
-        state.favoriteIds.push(pokemonId);
+        state.favoriteIds.push(pokemonId)
       }
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavoritePokemons.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.loading = true
+        state.error = null
       })
       .addCase(fetchFavoritePokemons.fulfilled, (state, action) => {
-        state.loading = false;
-        state.favoritePokemonsList = action.payload;
+        state.loading = false
+        state.favoritePokemonsList = action.payload
       })
       .addCase(fetchFavoritePokemons.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload || 'Unknown error';
-      });
-  },
-});
+        state.loading = false
+        state.error = action.payload || 'Unknown error'
+      })
+  }
+})
 
-export const { toggleFavorite } = favoritePokemonsSlice.actions;
-export default favoritePokemonsSlice.reducer;
+export const { toggleFavorite } = favoritePokemonsSlice.actions
+export default favoritePokemonsSlice.reducer
