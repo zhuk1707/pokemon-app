@@ -3,7 +3,7 @@ import { Pagination } from '../../components/Pagination/Pagination.tsx'
 import useGetPokemonListQuery from '../../features/pokemonList/pokemonSlice.ts'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store.ts'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { PokemonList } from '../../components/PokemonList/PokemonList.tsx'
 import { Loader } from '../../components/Loader/Loader.tsx'
 import { Card } from '../../components/Card/Card.tsx'
@@ -30,12 +30,6 @@ export const PokemonListScreen = () => {
   const totalPages = (!listLoading && !listError)
     ? Math.ceil(listData.count / ITEMS_PER_PAGE)
     : 0
-
-  useEffect(() => {
-
-  }, [currentPage])
-
-  console.log(listData)
 
   return (
     <>

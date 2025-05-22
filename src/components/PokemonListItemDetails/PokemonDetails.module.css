@@ -8,7 +8,14 @@
   padding: 0 1rem;
 }
 
-.navigation > button {
+.navigation > div {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  color: var(--dark-grey);
+}
+
+.navigation > div > button {
   padding: .3rem .5rem .3rem .3rem;
 }
 
@@ -141,7 +148,7 @@
     border-radius: 2rem;
   }
 
-  .navigation > button {
+  .navigation > div > button {
     padding: .8rem
   }
 
