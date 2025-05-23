@@ -49,31 +49,50 @@ export const PokemonListItemDetailsScreen = () => {
     <div>
       <div className="container">
         <div className={classes.navigation}>
-          <Button
-            title={'Prev'}
-            hiddenTittle
-            disabled={!id || Number(periodicNumber) - 1 === 0}
-            icon={<img src={arrowLeftIcon} alt="" />}
-            onClick={() => {
-              if (periodicNumber) {
-                navigate(`/details/${String(Number(periodicNumber) - 1)}`)
-              }
-            }}
-          />
-          <Button
-            title={'Next'}
-            hiddenTittle
-            disabled={!id || Number(periodicNumber) + 1 > 1024}
-            icon={<img src={arrowRightIcon} alt="" />}
-            onClick={() => {
-              if (periodicNumber) {
-                navigate(`/details/${String(Number(periodicNumber) + 1)}`)
-              }
-            }}
-          />
+
+          <div className="">
+            <Button
+              title={'Prev'}
+              hiddenTittle
+              disabled={!id || Number(periodicNumber) - 1 === 0}
+              icon={<img src={arrowLeftIcon} alt="" />}
+              onClick={() => {
+                if (periodicNumber) {
+                  navigate(`/details/${String(Number(periodicNumber) - 1)}`)
+                }
+              }}
+            />
+
+            {!loading
+              ? <span>#{Number(periodicNumber) >= 1 && Number(periodicNumber) - 1}</span>
+              : null
+            }
+          </div>
+
+          <span>{!loading ? `#${periodicNumber}` : null}</span>
+
+          <div className="">
+            {!loading
+              ? <span>#{Number(periodicNumber) >= 1 && Number(periodicNumber) + 1}</span>
+              : null
+            }
+
+            <Button
+              title={'Next'}
+              hiddenTittle
+              disabled={!id || Number(periodicNumber) + 1 > 1024}
+              icon={<img src={arrowRightIcon} alt="" />}
+              onClick={() => {
+                if (periodicNumber) {
+                  navigate(`/details/${String(Number(periodicNumber) + 1)}`)
+                }
+              }}
+            />
+          </div>
 
         </div>
       </div>
+
 
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={() => dispatch(closeModal())}>

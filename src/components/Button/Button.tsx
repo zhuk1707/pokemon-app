@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import classes from './Button.module.css'
 import React from 'react'
 
@@ -27,17 +28,20 @@ export const Button: React.FC<ButtonProps> = (
    ${active && classes.button_active}`
 
   return (
-    <button
+    <motion.button
       type="button"
       disabled={disabled}
       className={className}
       onClick={!disabled ? onClick : undefined}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: .98 }}
+      transition={{ duration: 0}}
     >
       {icon && <span className={classes.buttonIcon}>{icon}</span>}
       {title &&
         <span className={`${classes.buttonTitle} ${hiddenTittle && classes.buttonTitle__hidden}`}>
           {title}
         </span>}
-    </button>
+    </motion.button>
   )
 }

@@ -11,6 +11,10 @@
   border-radius: 3rem;
 }
 
+.comparison > .card > h1 {
+  font-size: 4rem;
+}
+
 @media (max-width: 768px) {
   .comparison {
     padding: 1rem;
