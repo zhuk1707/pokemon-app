@@ -28,15 +28,12 @@ export const ComparisonItems = () => {
     })
   }
 
-
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
-
 
   useEffect(() => {
     if (comparedIds.length) dispatch(fetchComparedPokemons(comparedIds))
     if (favoriteIds.length) dispatch(fetchComparedPokemons(comparedIds))
   }, [dispatch, comparedIds, favoriteIds])
-
 
   return (
     <section className={classes.comparisonWrapper}>
