@@ -7,7 +7,7 @@ import { AppDispatch, RootState } from '../../store/store.ts'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 import { motion } from 'motion/react'
-import getPeriodicNumberFromUrl from '../../utils/getIdNumberFromURL.ts'
+import getPeriodicNumberFromUrl from '../../utils/getPeriodicNumberFromUrl.ts'
 
 
 interface PokemonListProps {
