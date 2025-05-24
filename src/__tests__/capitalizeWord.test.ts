@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import capitalizeWord from './capitalizeWord.ts';
+import capitalizeWord from '../utils/capitalizeWord.ts';
 
 test('pass "wORD" to equal "WORD"', () => {
   expect(capitalizeWord('wORD')).toBe('WORD');

@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import getPages from './getPages.ts'
+import getPages from '../utils/getPages.ts'
 
 test('getPages(1, 1) should return [1]', () => {
   expect(getPages(1, 1)).toEqual([1])
