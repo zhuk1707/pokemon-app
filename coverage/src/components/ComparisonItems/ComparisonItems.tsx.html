@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
@@ -144,13 +144,8 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,15 +164,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -247,6 +235,7 @@ import { fetchComparedPokemons, toggleCompared } from '../../features/comparedPo
 import { ComparisonItem, ComparisonItemProps } from '../ComparisonItem/ComparisonItem.tsx'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 import { AnimatePresence } from 'motion/react'
+import getStatsComparisonResults from '../../utils/getStatsComparisonResults.ts'
 &nbsp;
 &nbsp;
 export const ComparisonItems = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
@@ -256,15 +245,8 @@ export const ComparisonItems = <span class="cstat-no" title="statement not cover
   } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.comparedPokemons)</span></span>
 &nbsp;
   let comparisonResult: number[] = <span class="cstat-no" title="statement not covered" >[]</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >  if (comparedPokemonsDetailsData?.length === 2) {</span>
-<span class="cstat-no" title="statement not covered" >    comparisonResult = comparedPokemonsDetailsData[0].stats.map(<span class="fstat-no" title="function not covered" >(e</span>l, index) =&gt; {</span>
-      const opponentStat = <span class="cstat-no" title="statement not covered" >comparedPokemonsDetailsData[1].stats[index].base_stat</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >      return el.base_stat &gt; opponentStat ? 1</span>
-        : el.base_stat === opponentStat ? 0
-          : -1
-    })
+<span class="cstat-no" title="statement not covered" >    comparisonResult = getStatsComparisonResults(comparedPokemonsDetailsData)</span>
   }
 &nbsp;
   const { favoriteIds } = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate: RootState) =&gt; <span class="cstat-no" title="statement not covered" >state.favoritePokemons)</span></span>
@@ -331,7 +313,7 @@ export const ComparisonItems = <span class="cstat-no" title="statement not cover
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-24T12:26:44.788Z
+                at 2025-05-25T08:46:23.810Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
