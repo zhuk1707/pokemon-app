@@ -19,7 +19,10 @@ export const ComparisonItems = () => {
 
   let comparisonResult: number[] = []
   if (comparedPokemonsDetailsData?.length === 2) {
-    comparisonResult = getStatsComparisonResults(comparedPokemonsDetailsData)
+    const firstOpp = comparedPokemonsDetailsData[0].stats
+    const secondOpp = comparedPokemonsDetailsData[1].stats
+
+    comparisonResult = getStatsComparisonResults(firstOpp, secondOpp)
   }
 
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
