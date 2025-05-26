@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router'
 export const ErrorScreen = () => {
   const navigate = useNavigate()
 
-
   return (
     <section className={classes.errorScreenWrap}>
       <div className="container">

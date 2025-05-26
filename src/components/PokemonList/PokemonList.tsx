@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from '../../store/store.ts'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 import { toggleCompared } from '../../features/comparedPokemonsSlice/comparedPokemonsSlice.ts'
 import { motion } from 'motion/react'
+import getPeriodicNumberFromUrl from '../../utils/getPeriodicNumberFromUrl.ts'
 
 
 interface PokemonListProps {
@@ -17,12 +18,6 @@ export const PokemonList = ({ list = [] }: PokemonListProps) => {
   const dispatch = useDispatch<AppDispatch>()
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
   const { comparedIds } = useSelector((state: RootState) => state.comparedPokemons)
-
-  const getPeriodicNumberFromUrl = (url: string): number => {
-    return Number(url
-      .replace('https://pokeapi.co/api/v2/pokemon/', '')
-      .replace('/', ''))
-  }
 
   return (
     <div className={classes.listOuter}>

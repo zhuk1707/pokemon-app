@@ -8,6 +8,7 @@ import { fetchComparedPokemons, toggleCompared } from '../../features/comparedPo
 import { ComparisonItem, ComparisonItemProps } from '../ComparisonItem/ComparisonItem.tsx'
 import { toggleFavorite } from '../../features/favoritePokemon/favoritePokemonSlice.ts'
 import { AnimatePresence } from 'motion/react'
+import getStatsComparisonResults from '../../utils/getStatsComparisonResults.ts'
 
 
 export const ComparisonItems = () => {
@@ -17,26 +18,19 @@ export const ComparisonItems = () => {
   } = useSelector((state: RootState) => state.comparedPokemons)
 
   let comparisonResult: number[] = []
-
   if (comparedPokemonsDetailsData?.length === 2) {
-    comparisonResult = comparedPokemonsDetailsData[0].stats.map((el, index) => {
-      const opponentStat = comparedPokemonsDetailsData[1].stats[index].base_stat
+    const firstOpp = comparedPokemonsDetailsData[0].stats
+    const secondOpp = comparedPokemonsDetailsData[1].stats
 
-      return el.base_stat > opponentStat ? 1
-        : el.base_stat === opponentStat ? 0
-          : -1
-    })
+    comparisonResult = getStatsComparisonResults(firstOpp, secondOpp)
   }
 
-
   const { favoriteIds } = useSelector((state: RootState) => state.favoritePokemons)
-
 
   useEffect(() => {
     if (comparedIds.length) dispatch(fetchComparedPokemons(comparedIds))
     if (favoriteIds.length) dispatch(fetchComparedPokemons(comparedIds))
   }, [dispatch, comparedIds, favoriteIds])
-
 
   return (
     <section className={classes.comparisonWrapper}>

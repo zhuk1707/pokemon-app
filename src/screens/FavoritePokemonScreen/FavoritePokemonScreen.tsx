@@ -17,7 +17,6 @@ export const FavoritePokemonScreen = () => {
     error
   } = useSelector((state: RootState) => state.favoritePokemons)
 
-
   useEffect(() => {
     dispatch(fetchFavoritePokemons(favoriteIds))
   }, [dispatch, favoriteIds])

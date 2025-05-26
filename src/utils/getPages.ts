@@ -1,4 +1,4 @@
-export default function getPages(pageCount: number, currentPage: number) {
+export default function getPages(pageCount: number, currentPage: number): number[] {
   const pages = []
   let start = Math.max(1, currentPage - 2)
   let end = Math.min(pageCount, currentPage + 2)
